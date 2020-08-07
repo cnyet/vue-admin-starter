@@ -1,16 +1,25 @@
 {
-  "name": "vue-build",
+  "name": "vue-starter",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
+    "testing": "vue-cli-service build --mode testing",
+    "staging": "vue-cli-service build --mode staging",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint --no-fix",
+    "lint:fix": "vue-cli-service lint"
   },
   "dependencies": {
+    "ant-design-vue": "^1.6.4",
+    "axios": "^0.19.2",
     "core-js": "^3.6.5",
+    "cssnano": "^4.1.10",
+    "js-cookie": "^2.2.1",
+    "postcss-assets": "^5.0.0",
+    "postcss-import": "^12.0.1",
     "register-service-worker": "^1.7.1",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
