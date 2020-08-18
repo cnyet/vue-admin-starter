@@ -22,7 +22,7 @@ export interface ResponseData {
 
 // 创建axios实例
 const instance = axios.create({
-  baseURL: process.env.VUE_APP_API_BASE_URL,
+  // baseURL: process.env.VUE_APP_API_BASE_URL,
   timeout: 30000,
   responseType: 'json',
   withCredentials: true,
@@ -43,25 +43,34 @@ export function validateAuth (): boolean {
 
 // 添加请求时拦截
 instance.interceptors.request.use((config: AxiosRequestConfig) => {
+  const isNeedAuth = config.auth || false;
+  if (isNeedAuth) {
+    const hasToken = validateAuth();
+    if (!hasToken) {
+      const error = new Error('暂无权限');
+      return Promise.reject(error);
+    }
+  }
   return config;
 });
 
 // 添加响应时的拦截
 instance.interceptors.response.use((response: AxiosResponse) => {
-  const requestUrl = response.config.url;
-  let msg: string | undefined;
-  if (response.status !== 200) {
-    msg = errorMessage.get(response.status);
-    msg = `${requestUrl} ${msg}`;
-    return Promise.reject(msg);
-  } else if (response.data.code !== 0) {
-    msg = errorMessage.get(response.data.code);
-    msg = `${requestUrl} ${msg}`;
-    return Promise.reject(msg);
+  if (response.status >= 200 && response.status < 300) {
+    if (response.data.code && response.data.code !== 0) {
+      const message = errorMessage.get(response.data.code);
+      const error = new Error(message || response.statusText);
+      return Promise.reject(error);
+    }
+  } else {
+    const message = errorMessage.get(response.data.code);
+    const error = new Error(message || response.statusText);
+    return Promise.reject(error);
   }
   return response;
 }, (error) => {
-  return Promise.reject(error.message);
+  const msg = error.response && error.response.statusText ? new Error(error.response.statusText) : error;
+  return Promise.reject(msg);
 });
 
 export default class Http {
@@ -69,23 +78,11 @@ export default class Http {
   static async get (
     url: string,
     params: object | null = null,
-    config: AxiosRequestConfig = {},
-    isNeedAuth = false
+    config: AxiosRequestConfig = {}
   ): Promise<ResponseData> {
-    if (isNeedAuth) {
-      const hasToken = validateAuth();
-      if (!hasToken) {
-        const error = new Error('暂无权限');
-        return Promise.reject(error.message);
-      }
-    }
     const res = await instance({ method: 'get', url, params, ...config });
-    const responseData: ResponseData = res.data;
-    return Promise.resolve({
-      code: responseData.code,
-      data: responseData.data,
-      message: responseData.message
-    });
+    const result: ResponseData = this.successResponse(res);
+    return Promise.resolve(result);
   }
   // POST请求
   static async post (
@@ -94,12 +91,8 @@ export default class Http {
     config: AxiosRequestConfig = {}
   ): Promise<ResponseData> {
     const res = await instance({ method: 'post', url, data, ...config });
-    const responseData: ResponseData = res.data;
-    return Promise.resolve({
-      code: responseData.code,
-      data: responseData.data,
-      message: responseData.message
-    });
+    const result: ResponseData = this.successResponse(res);
+    return Promise.resolve(result);
   }
   // PUT请求
   static async put (
@@ -108,12 +101,8 @@ export default class Http {
     config: AxiosRequestConfig = {}
   ): Promise<ResponseData> {
     const res = await instance({ method: 'put', url, data, ...config });
-    const responseData: ResponseData = res.data;
-    return Promise.resolve({
-      code: responseData.code,
-      data: responseData.data,
-      message: responseData.message
-    });
+    const result: ResponseData = this.successResponse(res);
+    return Promise.resolve(result);
   }
   // PATCH请求
   static async patch (
@@ -122,12 +111,8 @@ export default class Http {
     config: AxiosRequestConfig = {}
   ): Promise<ResponseData> {
     const res = await instance({ method: 'patch', url, data, ...config });
-    const responseData: ResponseData = res.data;
-    return Promise.resolve({
-      code: responseData.code,
-      data: responseData.data,
-      message: responseData.message
-    });
+    const result: ResponseData = this.successResponse(res);
+    return Promise.resolve(result);
   }
   // DELETE请求
   static async delete (
@@ -135,11 +120,15 @@ export default class Http {
     config: AxiosRequestConfig = {}
   ): Promise<ResponseData> {
     const res = await instance({ method: 'delete', url, ...config });
-    const responseData: ResponseData = res.data;
-    return Promise.resolve({
-      code: responseData.code,
-      data: responseData.data,
-      message: responseData.message
-    });
+    const result: ResponseData = this.successResponse(res);
+    return Promise.resolve(result);
+  }
+  // 返回数据格式
+  private static successResponse (res: AxiosResponse) {
+    return {
+      code: res.data.code || res.status,
+      data: res.data.data,
+      message: res.data.msg || res.statusText
+    };
   }
 }

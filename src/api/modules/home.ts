@@ -8,19 +8,15 @@
  */
 import Http from '../http';
 
-const PROJECT_LIST_API = '/map/config';
-const NOTIFICATIONS_API = '/map/notice';
-const FEEDBACK_API = '/map/feedback';
+const HOME_LIST_API = '/api/app/mock/1484/user';
+const SAVE_NEW_ITEM = '/api/app/mock/1484/status';
 
 // 获取产品列表
-const getProjectList = () => Http.get(PROJECT_LIST_API);
-// 获取公告信息
-const getNotifications = () => Http.get(NOTIFICATIONS_API);
-// 提交用户反馈信息
-const saveFeedback = (params: object) => Http.get(FEEDBACK_API, params);
+const getHomeList = () => Http.get(HOME_LIST_API);
+// 新增产品
+const saveNewItem = (data = {}) => Http.post(SAVE_NEW_ITEM, data);
 
 export default {
-  getProjectList,
-  getNotifications,
-  saveFeedback
+  getHomeList,
+  saveNewItem
 };

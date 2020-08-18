@@ -1,5 +1,5 @@
 /*
- * @Descripttion: 修改全局配置
+ * @Descripttion: 修改全局默认配置
  * @Author: 天泽
  * @Date: 2020-08-07 14:51:50
  * @LastEditors: 天泽
@@ -9,9 +9,10 @@ const path = require('path');
 
 module.exports = {
   lintOnSave: process.env.NODE_ENV !== 'production',
+  // 使用链式操作来修改配置
+  // config 参数为已经解析好的 webpack 配置
   chainWebpack: config => {
-    config.resolve.alias
-      .set('@', path.join(__dirname, 'src'));
+    config.resolve.alias.set('@', path.join(__dirname, 'src'));
     config.plugin('html')
       .tap((args) => {
         args[0].templateParameters = {
@@ -43,12 +44,12 @@ module.exports = {
       msTileImage: ''
     }
   },
+  // 配置 webpack-dev-server 本地服务
   devServer: {
     port: 8082,
     hot: true,
     compress: true,
     disableHostCheck: true,
-    allowedHosts: ['.bilibili.com'],
     proxy: {
       '/api': {
         target: 'http://rap2.taobao.org:38080',

@@ -7,16 +7,21 @@
  */
 
 // 获取文件名
-function getFileName (filName: string) {
+function getFileName (fileName: string) {
   // eslint-disable-next-line
   const reg = /([^<>/\\\|:""\*\?]+)\.\w+$/;
-  const match: RegExpMatchArray = filName.match(reg) || [];
+  const match: RegExpMatchArray = fileName.match(reg) || [];
   if (match[1]) {
     return match[1];
   }
   return '';
 }
 
+function sliceFileName (filePath: string): string {
+  return filePath.substring(filePath.lastIndexOf('/') + 1, filePath.lastIndexOf('.'));
+}
+
 export default {
-  getFileName
+  getFileName,
+  sliceFileName
 };
