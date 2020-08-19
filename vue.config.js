@@ -16,7 +16,7 @@ module.exports = {
     config.plugin('html')
       .tap((args) => {
         args[0].templateParameters = {
-          title: '游戏数据产品地图',
+          title: 'XXX管理系统',
           favicon: `${process.env.VUE_APP_BASE_URL}/favicon.ico`,
         };
       return args;

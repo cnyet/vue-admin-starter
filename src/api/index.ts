@@ -6,7 +6,9 @@
  * @LastEditTime: 2020-07-31 17:45:25
  */
 import HomeAction from './modules/home';
+import UserAction from './modules/user';
 
 export {
-  HomeAction
+  HomeAction,
+  UserAction
 };
