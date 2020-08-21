@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-05-29 16:21:30
  * @LastEditors: 天泽
- * @LastEditTime: 2020-08-18 18:25:35
+ * @LastEditTime: 2020-08-21 18:50:16
 -->
 <template>
   <div class="login-container">
@@ -44,16 +44,19 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { setCookie } from '@/api/auth';
 // import { UserAction } from '@/api';
 
 @Component({})
 export default class Login extends Vue {
-  form: any = null;
+  form: null | object = null;
   beforeCreate () {
     this.form = this.$form.createForm(this, { name: 'normal_login' });
   }
   handleSubmit (e: Event) {
     e.preventDefault();
+    setCookie('auth', 'KbijSNc2afmE_CHQAAAB');
+    this.$router.push('/');
   }
 };
 </script>

@@ -6,6 +6,8 @@
  * @LastEditTime: 2020-08-07 14:58:58
  */
 const path = require('path');
+// 分析包文件
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   lintOnSave: process.env.NODE_ENV !== 'production',
@@ -21,6 +23,17 @@ module.exports = {
         };
       return args;
     });
+  },
+  // 可以接收一个对象或函数，返回合并过的配置
+  configureWebpack: () => {
+    if (process.env.NODE_ENV === 'production') {
+      return {
+        plugins: [
+          // 使用包分析工具
+          new BundleAnalyzerPlugin()
+        ]
+      };
+    }
   },
   // 向 CSS 相关的 loader 传递选项
   css: {

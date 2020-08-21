@@ -3,19 +3,27 @@
  * @Author: 天泽
  * @Date: 2020-08-06 18:55:18
  * @LastEditors: 天泽
- * @LastEditTime: 2020-08-07 15:52:27
+ * @LastEditTime: 2020-08-21 17:52:06
 -->
 <template>
-  <div class="home">
-    首页
-  </div>
+  <section class="container">
+    <NavSide />
+    <main class="body">
+      <Header />
+      <router-view />
+    </main>
+  </section>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { HomeAction } from '@/api';
+import Header from './layout/Header.vue';
+import NavSide from './layout/NavSide.vue';
 
-@Component({})
+@Component({
+  components: { Header, NavSide }
+})
 export default class Home extends Vue {
   @Prop() private msg!: string;
   getHomeList () {
@@ -34,14 +42,15 @@ export default class Home extends Vue {
       console.error(err);
     });
   }
-  created () {
-    this.getHomeList();
-    this.saveNewItem();
-  }
 };
 </script>
 <style lang="scss" scoped>
-.home{
-  padding: 20px;
+.container{
+  display: flex;
+  height: 100%;
+  .body{
+    flex: auto;
+    background-color: $bg-light;
+  }
 }
 </style>

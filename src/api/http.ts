@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-07-23 16:02:48
  * @LastEditors: 天泽
- * @LastEditTime: 2020-08-07 15:24:32
+ * @LastEditTime: 2020-08-21 19:15:09
  */
 import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
 import { message } from 'ant-design-vue';
@@ -59,17 +59,17 @@ instance.interceptors.response.use((response: AxiosResponse) => {
   if (response.status >= 200 && response.status < 300) {
     if (response.data.code && response.data.code !== 0) {
       const message = errorMessage.get(response.data.code);
-      const error = new Error(message || response.statusText);
+      const error = message || response.statusText;
       return Promise.reject(error);
     }
   } else {
     const message = errorMessage.get(response.data.code);
-    const error = new Error(message || response.statusText);
+    const error = message || response.statusText;
     return Promise.reject(error);
   }
   return response;
 }, (error) => {
-  const msg = error.response && error.response.statusText ? new Error(error.response.statusText) : error;
+  const msg = error.response && error.response.statusText ? error.response.statusText : error;
   return Promise.reject(msg);
 });
 
