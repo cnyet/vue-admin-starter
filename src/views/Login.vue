@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-05-29 16:21:30
  * @LastEditors: 天泽
- * @LastEditTime: 2020-08-21 18:50:16
+ * @LastEditTime: 2020-09-03 17:21:35
 -->
 <template>
   <div class="login-container">
@@ -44,19 +44,32 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { WrappedFormUtils } from 'ant-design-vue/types/form/form';
 import { setCookie } from '@/api/auth';
 // import { UserAction } from '@/api';
 
 @Component({})
 export default class Login extends Vue {
-  form: null | object = null;
+  form: WrappedFormUtils | undefined;
   beforeCreate () {
     this.form = this.$form.createForm(this, { name: 'normal_login' });
   }
   handleSubmit (e: Event) {
     e.preventDefault();
-    setCookie('auth', 'KbijSNc2afmE_CHQAAAB');
-    this.$router.push('/');
+    if (this.form) {
+      this.form.validateFields((err, values) => {
+        if (!err) {
+          if (values.userName === 'admin' && values.password === '123') {
+            setCookie('KbijSNc2afmE_CHQAAAB');
+            this.$router.push('/');
+          } else {
+            this.$message.warn('账号或密码输入有误');
+          }
+        } else {
+          this.$message.warn('账号或密码输入有误');
+        }
+      });
+    }
   }
 };
 </script>

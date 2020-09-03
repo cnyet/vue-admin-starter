@@ -16,6 +16,6 @@ export const getCookie = (name?: string) => {
   return Cookie.get(COOKIE_KEY);
 };
 // 设置新的cookie
-export const setCookie = (cookie: string, params = {}) => {
-  Cookie.set(COOKIE_KEY, cookie, params);
+export const setCookie = (value: string, params = {}) => {
+  Cookie.set(COOKIE_KEY, value, params);
 };

@@ -49,6 +49,11 @@ module.exports = {
   },
   // PWA(渐进式web应用)，icon预加载路径的设置
   pwa: {
+    // 修改大尺寸图表的路径
+    manifestOptions: {
+      icons: []
+    },
+    // 修改图标默认的路径
     iconPaths: {
       favicon32: '',
       favicon16: '',

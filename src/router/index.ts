@@ -3,10 +3,11 @@
  * @Author: 天泽
  * @Date: 2020-08-06 18:55:18
  * @LastEditors: 天泽
- * @LastEditTime: 2020-08-21 19:15:53
+ * @LastEditTime: 2020-09-03 17:22:27
  */
 import Vue from 'vue';
-import VueRouter from 'vue-router';
+import VueRouter, { Route, RawLocation } from 'vue-router';
+import { ErrorHandler } from 'vue-router/types/router';
 import CommonRouter from './common';
 import { getCookie } from '@/api/auth';
 import store from '../store';
@@ -25,8 +26,7 @@ router.beforeEach((to, from, next) => {
       if (store.getters.routes.length === 0) {
         store.dispatch('addRoutes').then(() => {
           next({
-            path: to.path,
-            replace: true
+            path: to.path
           });
         });
       } else {
@@ -41,5 +41,14 @@ router.beforeEach((to, from, next) => {
     }
   }
 });
+
+// 解决Vue-Router升级导致的Uncaught(in promise) navigation guard问题
+const originalPush = VueRouter.prototype.push;
+VueRouter.prototype.push = function (location: RawLocation): Promise<Route> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return (originalPush.call(this, location) as any).catch(
+    (err: ErrorHandler) => err
+  );
+};
 
 export default router;

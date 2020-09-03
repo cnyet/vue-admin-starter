@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-08-07 15:02:12
  * @LastEditors: 天泽
- * @LastEditTime: 2020-08-21 18:34:10
+ * @LastEditTime: 2020-09-03 21:12:25
  */
 import { RouteConfig } from 'vue-router';
 
@@ -13,6 +13,7 @@ let routers: Array<RouteConfig> = [];
 modules.keys().forEach((key) => {
   routers = [...routers, ...modules(key).default];
 });
+
 export default [
   {
     path: '/',

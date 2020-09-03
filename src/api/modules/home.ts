@@ -3,8 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-07-30 11:06:02
  * @LastEditors: 天泽
- * @LastEditTime: 2020-08-04 17:39:54
- * @apiInfoUrl: https://info.bilibili.co/pages/viewpage.action?pageId=122238897
+ * @LastEditTime: 2020-09-03 20:43:14
  */
 import Http from '../http';
 

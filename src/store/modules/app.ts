@@ -2,7 +2,7 @@ import { ActionContext } from 'vuex';
 import { RouteConfig } from 'vue-router';
 import { UserAction } from '@/api';
 import router from '../../router';
-
+// import defaultMenus from '../../router/default';
 export interface AppStates {
   routes: object[];
 };

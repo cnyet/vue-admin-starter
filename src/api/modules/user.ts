@@ -4,7 +4,6 @@
  * @Date: 2020-07-30 11:06:02
  * @LastEditors: 天泽
  * @LastEditTime: 2020-08-21 15:27:55
- * @apiInfoUrl: https://info.bilibili.co/pages/viewpage.action?pageId=122238897
  */
 import Http from '../http';
 
