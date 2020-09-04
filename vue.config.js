@@ -18,7 +18,7 @@ module.exports = {
     config.plugin('html')
       .tap((args) => {
         args[0].templateParameters = {
-          title: 'XXX管理系统',
+          title: '中后台管理系统',
           favicon: `${process.env.VUE_APP_BASE_URL}/favicon.ico`,
         };
       return args;

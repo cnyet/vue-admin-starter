@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-08-06 18:55:18
  * @LastEditors: 天泽
- * @LastEditTime: 2020-09-03 17:22:27
+ * @LastEditTime: 2020-09-04 19:18:20
  */
 import Vue from 'vue';
 import VueRouter, { Route, RawLocation } from 'vue-router';
@@ -24,7 +24,7 @@ router.beforeEach((to, from, next) => {
       next('/');
     } else {
       if (store.getters.routes.length === 0) {
-        store.dispatch('addRoutes').then(() => {
+        store.dispatch('app/addRoutes').then(() => {
           next({
             path: to.path
           });

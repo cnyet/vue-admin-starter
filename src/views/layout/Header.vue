@@ -3,23 +3,30 @@
  * @Author: 天泽
  * @Date: 2020-07-24 11:01:59
  * @LastEditors: 天泽
- * @LastEditTime: 2020-08-21 17:37:50
+ * @LastEditTime: 2020-09-04 19:19:44
 -->
 <template>
   <header class="header">
     <a-icon
       class="trigger"
       :type="collapsed ? 'menu-unfold' : 'menu-fold'"
-      @click="() => (collapsed = !collapsed)"
+      @click="onChangeCollapsed"
     />
   </header>
 </template>
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
+import { Getter, namespace } from 'vuex-class';
+
+const appModule = namespace('app');
 
 @Component
 export default class Header extends Vue {
-  collapsed = false;
+  @Getter('collapsed') collapsed!: boolean;
+  @appModule.Action('toggleCollapsed') toggleCollapsed!: Function;
+  onChangeCollapsed () {
+    this.toggleCollapsed(!this.collapsed);
+  }
 };
 </script>
 <style lang="scss" scoped>
