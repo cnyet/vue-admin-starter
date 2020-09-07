@@ -3,31 +3,34 @@
  * @Author: 天泽
  * @Date: 2020-08-07 15:02:12
  * @LastEditors: 天泽
- * @LastEditTime: 2020-09-03 21:12:25
+ * @LastEditTime: 2020-09-07 20:47:05
  */
-import { RouteConfig } from 'vue-router';
+export const loginRouter = {
+  path: '/login',
+  name: 'Login',
+  component: () =>
+    import(/* webpackChunkName: "login" */ '@/views/Login.vue')
+};
 
-const modules = require.context('./modules', false, /\.ts/);
-let routers: Array<RouteConfig> = [];
-
-modules.keys().forEach((key) => {
-  routers = [...routers, ...modules(key).default];
-});
-
-export default [
+export const defaultRouter = [
   {
     path: '/',
-    name: 'Home',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
-    redirect: '/dashboard',
-    children: [...routers]
+    redirect: '/dashboard'
   }, {
-    path: '/login',
-    name: 'Login',
-    component: () => import(/* webpackChunkName: "login" */ '@/views/Login.vue')
+    path: '/403',
+    name: 'forbid',
+    component: () =>
+      import(/* webpackChunkName: "forbiddance" */ '@/views/exception/403.vue')
+  }, {
+    path: '/404',
+    name: 'notfound',
+    component: () =>
+      import(/* webpackChunkName: "notfound" */ '@/views/exception/404.vue')
+  }, {
+    path: '/500',
+    name: 'error',
+    component: () =>
+      import(/* webpackChunkName: "error" */ '@/views/exception/500.vue')
   }, {
     path: '*',
     redirect: '/404'

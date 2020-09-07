@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-08-21 15:47:17
  * @LastEditors: 天泽
- * @LastEditTime: 2020-09-04 19:26:23
+ * @LastEditTime: 2020-09-07 20:51:15
 -->
 <template>
   <aside :class="['wrapper', collapsed ? 'off' : 'on']">
@@ -79,6 +79,9 @@ export default class NavSide extends Vue {
   readonly title: string = process.env.VUE_APP_TITLE;
   @Getter('collapsed') collapsed!: boolean;
   @Getter('routes') routes!: object[];
+  created () {
+    console.log(this.routes);
+  }
 };
 </script>
 <style lang="scss" scoped>

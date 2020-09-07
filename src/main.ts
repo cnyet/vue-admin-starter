@@ -1,3 +1,10 @@
+/*
+ * @Descripttion: 应用初始化配置
+ * @Author: 天泽
+ * @Date: 2020-08-06 18:55:18
+ * @LastEditors: 天泽
+ * @LastEditTime: 2020-09-07 20:33:57
+ */
 import Vue from 'vue';
 import Antd from 'ant-design-vue';
 import App from './App.vue';

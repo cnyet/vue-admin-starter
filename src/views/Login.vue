@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-05-29 16:21:30
  * @LastEditors: 天泽
- * @LastEditTime: 2020-09-03 17:21:35
+ * @LastEditTime: 2020-09-07 20:34:17
 -->
 <template>
   <div class="login-container">
@@ -11,7 +11,7 @@
     :form="form"
     @submit="handleSubmit">
     <a-form-item>
-      <h3 class="title">XXX系统登录</h3>
+      <h3 class="title">中后台系统登录</h3>
     </a-form-item>
     <a-form-item>
       <a-input

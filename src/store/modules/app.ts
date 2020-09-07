@@ -3,13 +3,13 @@
  * @Author: 天泽
  * @Date: 2020-08-21 12:25:50
  * @LastEditors: 天泽
- * @LastEditTime: 2020-09-04 19:16:19
+ * @LastEditTime: 2020-09-07 20:46:13
  */
 import { ActionContext } from 'vuex';
 import { RouteConfig } from 'vue-router';
 import { UserAction } from '@/api';
 import router from '../../router';
-// import defaultMenus from '../../router/default';
+import Menus from '../../router/default';
 export interface AppStates {
   routes: object[];
   collapsed: boolean;
@@ -24,8 +24,9 @@ const app = {
   mutations: {
     // 动态添加路由
     ADD_ROUTES (state: AppStates, value: object[]) {
-      const routes: RouteConfig[] = [];
+      const routes: RouteConfig[] = Menus.admin;
       router.addRoutes(routes);
+      console.log(router);
       state.routes = value;
     },
     // 更新侧边导航的折叠状态
