@@ -3,27 +3,36 @@
  * @Author: 天泽
  * @Date: 2020-09-03 21:13:23
  * @LastEditors: 天泽
- * @LastEditTime: 2020-09-07 20:44:10
+ * @LastEditTime: 2020-09-08 21:19:45
  */
 import { RouteConfig } from 'vue-router';
 import { defaultRouter } from './common';
 
 // 管理员
-const ADMIN_MENUS: RouteConfig[] = [
-  ...defaultRouter,
+const ADMIN_ROUTER: RouteConfig[] = [
   {
-    path: '/dashboard',
-    name: 'Dashboard',
+    path: '/',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
-    children: []
-  }
+    redirect: '/dashboard',
+    children: [
+      {
+        path: 'dashboard',
+        name: 'Dashboard',
+        component: () =>
+          import(
+            /* webpackChunkName: "dashboard" */ '@/views/dashboard/index.vue'
+          )
+      }
+    ]
+  },
+  ...defaultRouter
 ];
 
 // 普通用户
-const USER_MENUS: RouteConfig[] = [
+const USER_ROUTER: RouteConfig[] = [
   ...defaultRouter,
   {
     path: '/',
@@ -32,7 +41,7 @@ const USER_MENUS: RouteConfig[] = [
   }
 ];
 // 访客
-const GUEST_MENUS: RouteConfig[] = [
+const GUEST_ROUTER: RouteConfig[] = [
   ...defaultRouter,
   {
     path: '/',
@@ -42,7 +51,7 @@ const GUEST_MENUS: RouteConfig[] = [
 ];
 
 export default {
-  admin: ADMIN_MENUS,
-  user: USER_MENUS,
-  guest: GUEST_MENUS
+  admin: ADMIN_ROUTER,
+  user: USER_ROUTER,
+  guest: GUEST_ROUTER
 };

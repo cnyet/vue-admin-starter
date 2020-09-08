@@ -3,13 +3,14 @@
  * @Author: 天泽
  * @Date: 2020-08-21 12:25:50
  * @LastEditors: 天泽
- * @LastEditTime: 2020-09-07 20:46:13
+ * @LastEditTime: 2020-09-08 21:10:23
  */
 import { ActionContext } from 'vuex';
 import { RouteConfig } from 'vue-router';
 import { UserAction } from '@/api';
 import router from '../../router';
 import Menus from '../../router/default';
+import { defaultMenus } from '../../router/common';
 export interface AppStates {
   routes: object[];
   collapsed: boolean;
@@ -26,8 +27,8 @@ const app = {
     ADD_ROUTES (state: AppStates, value: object[]) {
       const routes: RouteConfig[] = Menus.admin;
       router.addRoutes(routes);
-      console.log(router);
-      state.routes = value;
+      console.log(value);
+      state.routes = defaultMenus;
     },
     // 更新侧边导航的折叠状态
     TOGGLE_COLLAPSED (state: AppStates, value: boolean) {

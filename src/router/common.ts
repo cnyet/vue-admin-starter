@@ -3,36 +3,102 @@
  * @Author: 天泽
  * @Date: 2020-08-07 15:02:12
  * @LastEditors: 天泽
- * @LastEditTime: 2020-09-07 20:47:05
+ * @LastEditTime: 2020-09-08 21:16:41
  */
 export const loginRouter = {
   path: '/login',
   name: 'Login',
-  component: () =>
-    import(/* webpackChunkName: "login" */ '@/views/Login.vue')
+  component: () => import(/* webpackChunkName: "login" */ '@/views/Login.vue')
 };
 
 export const defaultRouter = [
   {
-    path: '/',
-    redirect: '/dashboard'
-  }, {
     path: '/403',
     name: 'forbid',
     component: () =>
       import(/* webpackChunkName: "forbiddance" */ '@/views/exception/403.vue')
-  }, {
+  },
+  {
     path: '/404',
     name: 'notfound',
     component: () =>
       import(/* webpackChunkName: "notfound" */ '@/views/exception/404.vue')
-  }, {
+  },
+  {
     path: '/500',
     name: 'error',
     component: () =>
       import(/* webpackChunkName: "error" */ '@/views/exception/500.vue')
-  }, {
+  },
+  {
     path: '*',
     redirect: '/404'
+  }
+];
+
+export const defaultMenus = [
+  {
+    key: '1',
+    name: '仪表盘',
+    value: 'dashboard',
+    icon: 'dashboard'
+  },
+  {
+    key: '2',
+    name: '表单页',
+    value: 'form',
+    icon: 'desktop'
+  },
+  {
+    key: '3',
+    name: '结果页',
+    value: 'result',
+    icon: 'inbox'
+  },
+  {
+    key: '4',
+    name: '列表页',
+    value: 'list',
+    icon: 'mail',
+    children: [
+      {
+        key: '5',
+        name: '搜索列表',
+        value: 'search',
+        icon: 'inbox'
+      },
+      {
+        key: '6',
+        name: '查询列表',
+        value: 'checkout',
+        icon: 'inbox'
+      },
+      {
+        key: '7',
+        name: '标准列表',
+        value: 'standard',
+        icon: 'inbox'
+      }
+    ]
+  },
+  {
+    key: '9',
+    name: '详情页',
+    value: 'detail',
+    icon: 'appstore',
+    children: [
+      {
+        key: '10',
+        name: '基础详情',
+        value: 'basicDetail',
+        icon: 'inbox'
+      },
+      {
+        key: '11',
+        name: '高级详情',
+        value: 'advancedDetail',
+        icon: 'inbox'
+      }
+    ]
   }
 ];
