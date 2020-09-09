@@ -64,20 +64,17 @@ export const defaultMenus = [
       {
         key: '5',
         name: '搜索列表',
-        value: 'search',
-        icon: 'inbox'
+        value: 'search'
       },
       {
         key: '6',
         name: '查询列表',
-        value: 'checkout',
-        icon: 'inbox'
+        value: 'checkout'
       },
       {
         key: '7',
         name: '标准列表',
-        value: 'standard',
-        icon: 'inbox'
+        value: 'standard'
       }
     ]
   },
@@ -90,14 +87,12 @@ export const defaultMenus = [
       {
         key: '10',
         name: '基础详情',
-        value: 'basicDetail',
-        icon: 'inbox'
+        value: 'basicDetail'
       },
       {
         key: '11',
         name: '高级详情',
-        value: 'advancedDetail',
-        icon: 'inbox'
+        value: 'advancedDetail'
       }
     ]
   }

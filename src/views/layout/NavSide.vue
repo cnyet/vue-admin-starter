@@ -22,18 +22,18 @@
       :default-open-keys="['sub1']"
       mode="inline"
       theme="dark"
-      :inline-collapsed="collapsed">
+      :inline-collapsed="collapsed"
+      @click="onChangeMenu">
       <template v-for="item in menus">
-        <a-sub-menu v-if="item.children" :key="item.key">
+        <a-sub-menu v-if="item.children" :key="item.value">
           <span slot="title">
             <a-icon :type="item.icon" /><span>{{item.name}}</span>
           </span>
-          <a-menu-item v-for="element in item.children" :key="element.key">
-            <a-icon :type="element.icon" />
+          <a-menu-item v-for="element in item.children" :key="element.value">
             <span>{{element.name}}</span>
           </a-menu-item>
         </a-sub-menu>
-        <a-menu-item v-else :key="item.key">
+        <a-menu-item v-else :key="item.value">
           <a-icon :type="item.icon" />
           <span>{{item.name}}</span>
         </a-menu-item>
@@ -50,6 +50,11 @@ export default class NavSide extends Vue {
   readonly title: string = process.env.VUE_APP_TITLE;
   @Getter('collapsed') collapsed!: boolean;
   @Getter('routes') menus!: object[];
+  onChangeMenu ({ key }) {
+    this.$router.push({
+      name: key
+    });
+  }
   created () {
     console.log(this.menus);
   }

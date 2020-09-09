@@ -7,6 +7,7 @@
  */
 import { RouteConfig } from 'vue-router';
 import { defaultRouter } from './common';
+import { dashboard, form } from './modules/base';
 
 // 管理员
 const ADMIN_ROUTER: RouteConfig[] = [
@@ -18,14 +19,8 @@ const ADMIN_ROUTER: RouteConfig[] = [
     component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
     redirect: '/dashboard',
     children: [
-      {
-        path: 'dashboard',
-        name: 'Dashboard',
-        component: () =>
-          import(
-            /* webpackChunkName: "dashboard" */ '@/views/dashboard/index.vue'
-          )
-      }
+      ...dashboard,
+      ...form
     ]
   },
   ...defaultRouter
