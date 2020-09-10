@@ -11,7 +11,7 @@ export const loginRouter = {
   component: () => import(/* webpackChunkName: "login" */ '@/views/Login.vue')
 };
 
-export const defaultRouter = [
+export const commonRouter = [
   {
     path: '/403',
     name: 'forbid',

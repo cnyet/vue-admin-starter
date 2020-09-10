@@ -6,8 +6,8 @@
  * @LastEditTime: 2020-09-08 21:19:45
  */
 import { RouteConfig } from 'vue-router';
-import { defaultRouter } from './common';
-import { dashboard, form } from './modules/base';
+import { commonRouter } from './common';
+import baseRouter from './modules/base';
 
 // 管理员
 const ADMIN_ROUTER: RouteConfig[] = [
@@ -19,30 +19,29 @@ const ADMIN_ROUTER: RouteConfig[] = [
     component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
     redirect: '/dashboard',
     children: [
-      ...dashboard,
-      ...form
+      ...baseRouter
     ]
   },
-  ...defaultRouter
+  ...commonRouter
 ];
 
 // 普通用户
 const USER_ROUTER: RouteConfig[] = [
-  ...defaultRouter,
   {
     path: '/',
     name: '',
     component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue')
-  }
+  },
+  ...commonRouter
 ];
 // 访客
 const GUEST_ROUTER: RouteConfig[] = [
-  ...defaultRouter,
   {
     path: '/',
     name: '',
     component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue')
-  }
+  },
+  ...commonRouter
 ];
 
 export default {

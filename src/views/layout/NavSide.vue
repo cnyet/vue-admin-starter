@@ -50,7 +50,7 @@ export default class NavSide extends Vue {
   readonly title: string = process.env.VUE_APP_TITLE;
   @Getter('collapsed') collapsed!: boolean;
   @Getter('routes') menus!: object[];
-  onChangeMenu ({ key }) {
+  onChangeMenu ({ key }: { key: string }) {
     this.$router.push({
       name: key
     });
