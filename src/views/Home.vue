@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-08-06 18:55:18
  * @LastEditors: 天泽
- * @LastEditTime: 2020-08-21 17:52:06
+ * @LastEditTime: 2020-09-16 16:27:31
 -->
 <template>
   <section class="container">
@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { HomeAction } from '@/api';
+import { HomeAction, UserAction } from '@/api';
 import Header from './layout/Header.vue';
 import NavSide from './layout/NavSide.vue';
 
@@ -33,6 +33,11 @@ export default class Home extends Vue {
       console.error(err);
     });
   }
+  getUserList () {
+    UserAction.getUserList().then(res => {
+      console.log(res);
+    });
+  }
   saveNewItem () {
     HomeAction.saveNewItem({
       name: 123
@@ -41,6 +46,9 @@ export default class Home extends Vue {
     }).catch(err => {
       console.error(err);
     });
+  }
+  created () {
+    this.getUserList();
   }
 };
 </script>

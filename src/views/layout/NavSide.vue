@@ -8,15 +8,8 @@
 <template>
   <aside :class="['wrapper', collapsed ? 'off' : 'on']">
     <div class="logo-box">
-      <router-link class="link" to="/">{{collapsed ? '' : title}}</router-link>
+      <router-link class="link" to="/"></router-link>
     </div>
-    <!-- <ul class="menus">
-      <li class="menus-item"
-        v-for="item in routes"
-        :key="item.key">
-        {{item.name}}
-      </li>
-    </ul> -->
     <a-menu
       :default-selected-keys="['1']"
       :default-open-keys="['sub1']"
@@ -55,9 +48,6 @@ export default class NavSide extends Vue {
       name: key
     });
   }
-  created () {
-    console.log(this.menus);
-  }
 };
 </script>
 <style lang="scss" scoped>
@@ -66,9 +56,6 @@ export default class NavSide extends Vue {
   transition: width .3s ease;
   &.off{
     width: 80px;
-    .link{
-      background-color: rgba(200, 200, 200, .3);
-    }
   }
   &.on{
     width: 240px;
@@ -86,6 +73,7 @@ export default class NavSide extends Vue {
       color: $fc-white;
       display: inline-block;
       line-height: 32px;
+      background-color: rgba(200, 200, 200, .3);
     }
   }
   .menus{

@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-07-23 16:02:48
  * @LastEditors: 天泽
- * @LastEditTime: 2020-08-21 19:15:09
+ * @LastEditTime: 2020-09-16 20:46:53
  */
 import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
 import { message } from 'ant-design-vue';
@@ -74,52 +74,9 @@ instance.interceptors.response.use((response: AxiosResponse) => {
 });
 
 export default class Http {
-  // GET请求
-  static async get (
-    url: string,
-    params: object | null = null,
-    config: AxiosRequestConfig = {}
-  ): Promise<ResponseData> {
-    const res = await instance({ method: 'get', url, params, ...config });
-    const result: ResponseData = this.successResponse(res);
-    return Promise.resolve(result);
-  }
-  // POST请求
-  static async post (
-    url: string,
-    data: object | null = null,
-    config: AxiosRequestConfig = {}
-  ): Promise<ResponseData> {
-    const res = await instance({ method: 'post', url, data, ...config });
-    const result: ResponseData = this.successResponse(res);
-    return Promise.resolve(result);
-  }
-  // PUT请求
-  static async put (
-    url: string,
-    data: object | null = null,
-    config: AxiosRequestConfig = {}
-  ): Promise<ResponseData> {
-    const res = await instance({ method: 'put', url, data, ...config });
-    const result: ResponseData = this.successResponse(res);
-    return Promise.resolve(result);
-  }
-  // PATCH请求
-  static async patch (
-    url: string,
-    data: object | null = null,
-    config: AxiosRequestConfig = {}
-  ): Promise<ResponseData> {
-    const res = await instance({ method: 'patch', url, data, ...config });
-    const result: ResponseData = this.successResponse(res);
-    return Promise.resolve(result);
-  }
-  // DELETE请求
-  static async delete (
-    url: string,
-    config: AxiosRequestConfig = {}
-  ): Promise<ResponseData> {
-    const res = await instance({ method: 'delete', url, ...config });
+  // 封装 GET、POST、PATCH、PUT、DELETE 等请求的配置参数
+  static async create (config: AxiosRequestConfig): Promise<ResponseData> {
+    const res = await instance(config);
     const result: ResponseData = this.successResponse(res);
     return Promise.resolve(result);
   }
@@ -127,7 +84,7 @@ export default class Http {
   private static successResponse (res: AxiosResponse) {
     return {
       code: res.data.code || res.status,
-      data: res.data.data,
+      data: res.data.data || res.data,
       message: res.data.msg || res.statusText
     };
   }

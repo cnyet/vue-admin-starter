@@ -3,10 +3,10 @@
  * @Author: 天泽
  * @Date: 2020-09-03 21:13:23
  * @LastEditors: 天泽
- * @LastEditTime: 2020-09-08 21:19:45
+ * @LastEditTime: 2020-09-11 16:20:55
  */
 import { RouteConfig } from 'vue-router';
-import { commonRouter } from './common';
+import { exceptionRouter } from './common';
 import baseRouter from './modules/base';
 
 // 管理员
@@ -18,11 +18,9 @@ const ADMIN_ROUTER: RouteConfig[] = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
     redirect: '/dashboard',
-    children: [
-      ...baseRouter
-    ]
+    children: [...baseRouter]
   },
-  ...commonRouter
+  ...exceptionRouter
 ];
 
 // 普通用户
@@ -32,7 +30,7 @@ const USER_ROUTER: RouteConfig[] = [
     name: '',
     component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue')
   },
-  ...commonRouter
+  ...exceptionRouter
 ];
 // 访客
 const GUEST_ROUTER: RouteConfig[] = [
@@ -41,7 +39,7 @@ const GUEST_ROUTER: RouteConfig[] = [
     name: '',
     component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue')
   },
-  ...commonRouter
+  ...exceptionRouter
 ];
 
 export default {

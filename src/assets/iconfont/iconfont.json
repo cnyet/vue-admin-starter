@@ -1,0 +1,44 @@
+{
+  "id": "2065110",
+  "name": "vue-admin-starter",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "3703944",
+      "name": "language",
+      "font_class": "language1",
+      "unicode": "e66f",
+      "unicode_decimal": 58991
+    },
+    {
+      "icon_id": "836483",
+      "name": "dashboard",
+      "font_class": "dashboard",
+      "unicode": "e6b6",
+      "unicode_decimal": 59062
+    },
+    {
+      "icon_id": "12011697",
+      "name": "search",
+      "font_class": "search",
+      "unicode": "e7b3",
+      "unicode_decimal": 59315
+    },
+    {
+      "icon_id": "13990899",
+      "name": "bar",
+      "font_class": "bar",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "14629156",
+      "name": "document",
+      "font_class": "document",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    }
+  ]
+}

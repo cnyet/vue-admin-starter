@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-08-07 15:02:12
  * @LastEditors: 天泽
- * @LastEditTime: 2020-09-08 21:16:41
+ * @LastEditTime: 2020-09-11 16:20:34
  */
 export const loginRouter = {
   path: '/login',
@@ -11,7 +11,7 @@ export const loginRouter = {
   component: () => import(/* webpackChunkName: "login" */ '@/views/Login.vue')
 };
 
-export const commonRouter = [
+export const exceptionRouter = [
   {
     path: '/403',
     name: 'forbid',

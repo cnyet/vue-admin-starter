@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-08-07 14:51:50
  * @LastEditors: 天泽
- * @LastEditTime: 2020-08-07 14:58:58
+ * @LastEditTime: 2020-09-16 20:03:25
  */
 const path = require('path');
 // 分析包文件
@@ -43,7 +43,8 @@ module.exports = {
         prependData: `
           @import "@/assets/styles/_mixin.scss";
           @import "@/assets/styles/_variable.scss";
-        `
+        `,
+        implementation: require('sass')
       }
     },
   },
@@ -78,6 +79,8 @@ module.exports = {
     overlay: {
       warnings: true,
       errors: true
-    }
+    },
+    // 自定义优先执行的中间件
+    before: require('./mock/server')
   }
 };

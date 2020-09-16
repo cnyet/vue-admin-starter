@@ -3,17 +3,27 @@
  * @Author: 天泽
  * @Date: 2020-07-30 11:06:02
  * @LastEditors: 天泽
- * @LastEditTime: 2020-09-03 20:43:14
+ * @LastEditTime: 2020-09-16 20:45:00
  */
 import Http from '../http';
 
-const HOME_LIST_API = '/api/app/mock/1484/user';
-const SAVE_NEW_ITEM = '/api/app/mock/1484/status';
-
 // 获取产品列表
-const getHomeList = () => Http.get(HOME_LIST_API);
+function getHomeList (params = {}) {
+  return Http.create({
+    method: 'get',
+    url: '/api/app/mock/1484/user',
+    params
+  });
+}
+
 // 新增产品
-const saveNewItem = (data = {}) => Http.post(SAVE_NEW_ITEM, data);
+function saveNewItem (params = {}) {
+  return Http.create({
+    method: 'get',
+    url: '/api/app/mock/1484/status',
+    params
+  });
+}
 
 export default {
   getHomeList,
