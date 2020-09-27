@@ -3,97 +3,74 @@
  * @Author: 天泽
  * @Date: 2020-08-07 15:02:12
  * @LastEditors: 天泽
- * @LastEditTime: 2020-09-11 16:20:34
+ * @LastEditTime: 2020-09-27 21:09:46
  */
-export const loginRouter = {
+export interface RouteInterface {
+  key: string;
+  path: string;
+  name: string;
+  meta: {
+    icon: string;
+    title: string;
+  };
+  component: Function;
+};
+
+export interface MenusInterface {
+  key: string;
+  value: string;
+  name: string;
+  icon: string;
+  children?: {
+    key: string;
+    value: string;
+    name: string;
+    icon: string;
+  };
+};
+
+// eslint-disable-next-line
+function importModules(files: any) {
+  const routeModules: RouteInterface[] = [];
+  files.keys().forEach((key: string) => {
+    routeModules.push(...files(key).default);
+  });
+  routeModules.sort((a: RouteInterface, b: RouteInterface) => Number(a.key) - Number(b.key));
+  return routeModules;
+}
+export const routeModules = importModules (require.context('./modules', false, /\.ts$/));
+
+export default [{
   path: '/login',
   name: 'Login',
   component: () => import(/* webpackChunkName: "login" */ '@/views/Login.vue')
-};
-
-export const exceptionRouter = [
-  {
-    path: '/403',
-    name: 'forbid',
-    component: () =>
-      import(/* webpackChunkName: "forbiddance" */ '@/views/exception/403.vue')
-  },
-  {
-    path: '/404',
-    name: 'notfound',
-    component: () =>
-      import(/* webpackChunkName: "notfound" */ '@/views/exception/404.vue')
-  },
-  {
-    path: '/500',
-    name: 'error',
-    component: () =>
-      import(/* webpackChunkName: "error" */ '@/views/exception/500.vue')
-  },
-  {
-    path: '*',
-    redirect: '/404'
-  }
-];
-
-export const defaultMenus = [
-  {
+}, {
+  path: '/403',
+  name: 'forbid',
+  component: () => import(/* webpackChunkName: "forbiddance" */ '@/views/exception/403.vue')
+}, {
+  path: '/404',
+  name: 'notfound',
+  component: () => import(/* webpackChunkName: "notfound" */ '@/views/exception/404.vue')
+}, {
+  path: '/500',
+  name: 'error',
+  component: () => import(/* webpackChunkName: "error" */ '@/views/exception/500.vue')
+}, {
+  path: '/',
+  redirect: '/dashboard',
+  component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
+  children: [{
     key: '1',
-    name: '仪表盘',
-    value: 'dashboard',
-    icon: 'dashboard'
-  },
-  {
-    key: '2',
-    name: '表单页',
-    value: 'form',
-    icon: 'desktop'
-  },
-  {
-    key: '3',
-    name: '结果页',
-    value: 'result',
-    icon: 'inbox'
-  },
-  {
-    key: '4',
-    name: '列表页',
-    value: 'list',
-    icon: 'mail',
-    children: [
-      {
-        key: '5',
-        name: '搜索列表',
-        value: 'search'
-      },
-      {
-        key: '6',
-        name: '查询列表',
-        value: 'checkout'
-      },
-      {
-        key: '7',
-        name: '标准列表',
-        value: 'standard'
-      }
-    ]
-  },
-  {
-    key: '9',
-    name: '详情页',
-    value: 'detail',
-    icon: 'appstore',
-    children: [
-      {
-        key: '10',
-        name: '基础详情',
-        value: 'basicDetail'
-      },
-      {
-        key: '11',
-        name: '高级详情',
-        value: 'advancedDetail'
-      }
-    ]
-  }
-];
+    path: 'dashboard',
+    name: 'dashboard',
+    meta: {
+      icon: 'dashboard',
+      title: 'Dashboard'
+    },
+    component: () => import(/* webpackChunkName: "dashboard" */ '@/views/dashboard/index.vue')
+  }]
+}, {
+  path: '*',
+  redirect: '/404'
+}];

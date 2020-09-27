@@ -3,19 +3,19 @@
  * @Author: 天泽
  * @Date: 2020-08-06 18:55:18
  * @LastEditors: 天泽
- * @LastEditTime: 2020-09-04 20:30:29
+ * @LastEditTime: 2020-09-27 20:41:01
  */
 import Vue from 'vue';
 import VueRouter, { Route, RawLocation } from 'vue-router';
 import { ErrorHandler } from 'vue-router/types/router';
-import { loginRouter } from './common';
+import commonRouter from './common';
 import { getCookie } from '@/api/auth';
 import store from '../store';
 
 Vue.use(VueRouter);
 
 const router = new VueRouter({
-  routes: [loginRouter]
+  routes: commonRouter
 });
 
 router.beforeEach((to, from, next) => {

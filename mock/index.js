@@ -6,7 +6,9 @@
  * @LastEditTime: 2020-09-16 20:58:33
  */
 const UserMock = require('./user');
+const HomeMock = require('./home');
 
 module.exports = [
-  ...UserMock
+  ...UserMock,
+  ...HomeMock
 ];

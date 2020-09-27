@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-07-30 11:06:02
  * @LastEditors: 天泽
- * @LastEditTime: 2020-09-16 20:43:39
+ * @LastEditTime: 2020-09-27 21:01:16
  */
 import Http from '../http';
 
@@ -19,7 +19,7 @@ function getUserList (params = {}) {
 function getMenus (params = {}) {
   return Http.create({
     method: 'get',
-    url: '/api/app/mock/1484/routes',
+    url: '/api/userList',
     params
   });
 }

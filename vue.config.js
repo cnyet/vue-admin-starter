@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-08-07 14:51:50
  * @LastEditors: 天泽
- * @LastEditTime: 2020-09-16 20:03:25
+ * @LastEditTime: 2020-09-27 16:59:04
  */
 const path = require('path');
 // 分析包文件
@@ -69,13 +69,13 @@ module.exports = {
     hot: true,
     compress: true,
     disableHostCheck: true,
-    proxy: {
-      '/api': {
-        target: 'http://rap2.taobao.org:38080',
-        changeOrigin: true,  // 是否跨域
-        pathRewrite: {'/api': '' },  // 重写接口去掉 /api
-      },
-    },
+    // proxy: {
+    //   '/api': {
+    //     target: 'http://rap2.taobao.org:38080',
+    //     changeOrigin: true,  // 是否跨域
+    //     pathRewrite: {'/api': '' },  // 重写接口去掉 /api
+    //   },
+    // },
     overlay: {
       warnings: true,
       errors: true

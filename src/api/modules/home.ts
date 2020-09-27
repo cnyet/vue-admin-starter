@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-07-30 11:06:02
  * @LastEditors: 天泽
- * @LastEditTime: 2020-09-16 20:45:00
+ * @LastEditTime: 2020-09-27 17:08:17
  */
 import Http from '../http';
 
@@ -11,7 +11,7 @@ import Http from '../http';
 function getHomeList (params = {}) {
   return Http.create({
     method: 'get',
-    url: '/api/app/mock/1484/user',
+    url: '/api/home/projectList',
     params
   });
 }
@@ -20,7 +20,7 @@ function getHomeList (params = {}) {
 function saveNewItem (params = {}) {
   return Http.create({
     method: 'get',
-    url: '/api/app/mock/1484/status',
+    url: '/api/home/saveProject',
     params
   });
 }
