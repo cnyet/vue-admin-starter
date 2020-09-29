@@ -4,7 +4,7 @@ export default [
     path: '/user',
     name: 'user',
     meta: {
-      icon: 'inbox',
+      icon: 'iconUserSettings',
       title: '个人页'
     },
     component: () => import(/* webpackChunkName: "form" */ '@/views/Home.vue'),

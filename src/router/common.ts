@@ -3,9 +3,9 @@
  * @Author: 天泽
  * @Date: 2020-08-07 15:02:12
  * @LastEditors: 天泽
- * @LastEditTime: 2020-09-27 21:09:46
+ * @LastEditTime: 2020-09-29 16:42:38
  */
-export interface RouteInterface {
+export interface RouteItemInterface {
   key: string;
   path: string;
   name: string;
@@ -14,19 +14,20 @@ export interface RouteInterface {
     title: string;
   };
   component: Function;
+}
+export interface RouteInterface extends RouteItemInterface{
+  children?: RouteItemInterface[];
 };
 
-export interface MenusInterface {
+export interface MenusItemInterface {
   key: string;
   value: string;
   name: string;
   icon: string;
-  children?: {
-    key: string;
-    value: string;
-    name: string;
-    icon: string;
-  };
+};
+
+export interface MenusInterface extends MenusItemInterface {
+  children?: MenusItemInterface[];
 };
 
 // eslint-disable-next-line
@@ -38,38 +39,36 @@ function importModules(files: any) {
   routeModules.sort((a: RouteInterface, b: RouteInterface) => Number(a.key) - Number(b.key));
   return routeModules;
 }
-export const routeModules = importModules (require.context('./modules', false, /\.ts$/));
+export const routeModules = importModules(require.context('./modules', false, /\.ts$/));
 
 export default [{
+  path: '/',
+  redirect: '/dashboard',
+  // route level code-splitting
+  // this generates a separate chunk (about.[hash].js) for this route
+  // which is lazy-loaded when the route is visited.
+  component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
+  children: [{
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: () => import(/* webpackChunkName: "home" */ '@/views/dashboard/index.vue')
+  }]
+}, {
   path: '/login',
   name: 'Login',
   component: () => import(/* webpackChunkName: "login" */ '@/views/Login.vue')
 }, {
   path: '/403',
-  name: 'forbid',
+  name: '403',
   component: () => import(/* webpackChunkName: "forbiddance" */ '@/views/exception/403.vue')
 }, {
   path: '/404',
-  name: 'notfound',
+  name: '404',
   component: () => import(/* webpackChunkName: "notfound" */ '@/views/exception/404.vue')
 }, {
   path: '/500',
-  name: 'error',
+  name: '500',
   component: () => import(/* webpackChunkName: "error" */ '@/views/exception/500.vue')
-}, {
-  path: '/',
-  redirect: '/dashboard',
-  component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
-  children: [{
-    key: '1',
-    path: 'dashboard',
-    name: 'dashboard',
-    meta: {
-      icon: 'dashboard',
-      title: 'Dashboard'
-    },
-    component: () => import(/* webpackChunkName: "dashboard" */ '@/views/dashboard/index.vue')
-  }]
 }, {
   path: '*',
   redirect: '/404'

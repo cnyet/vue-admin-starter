@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-08-21 15:47:17
  * @LastEditors: 天泽
- * @LastEditTime: 2020-09-08 20:50:27
+ * @LastEditTime: 2020-09-29 17:30:45
 -->
 <template>
   <aside :class="['wrapper', collapsed ? 'off' : 'on']">
@@ -18,16 +18,17 @@
       :inline-collapsed="collapsed"
       @click="onChangeMenu">
       <template v-for="item in menus">
-        <a-sub-menu v-if="item.children" :key="item.value">
+        <a-sub-menu v-if="item.children" :key="item.key">
           <span slot="title">
-            <a-icon :type="item.icon" /><span>{{item.name}}</span>
+            <i :class="['iconfont', item.icon]"></i>
+            <span>{{item.name}}</span>
           </span>
-          <a-menu-item v-for="element in item.children" :key="element.value">
+          <a-menu-item v-for="element in item.children" :key="element.key">
             <span>{{element.name}}</span>
           </a-menu-item>
         </a-sub-menu>
-        <a-menu-item v-else :key="item.value">
-          <a-icon :type="item.icon" />
+        <a-menu-item v-else :key="item.key">
+          <i :class="['iconfont', item.icon]"></i>
           <span>{{item.name}}</span>
         </a-menu-item>
       </template>
@@ -75,6 +76,9 @@ export default class NavSide extends Vue {
       line-height: 32px;
       background-color: rgba(200, 200, 200, .3);
     }
+  }
+  .iconfont{
+    margin-right: 10px;
   }
   .menus{
     font-size: 16px;

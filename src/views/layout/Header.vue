@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-07-24 11:01:59
  * @LastEditors: 天泽
- * @LastEditTime: 2020-09-14 17:58:23
+ * @LastEditTime: 2020-09-29 15:45:00
 -->
 <template>
   <header class="header clearfix">
@@ -18,9 +18,9 @@
     <div class="header-right">
       <i class="iconfont iconsearch"></i>
       <a-dropdown placement="bottomCenter">
-        <a-menu slot="overlay">
-          <a-menu-item key="1">个人中心</a-menu-item>
-          <a-menu-item key="2">退出登录</a-menu-item>
+        <a-menu slot="overlay" @click="onSelectMenu">
+          <a-menu-item key="user">个人中心</a-menu-item>
+          <a-menu-item key="logout">退出登录</a-menu-item>
         </a-menu>
         <img class="avatar" :src="AvatarImg">
       </a-dropdown>
@@ -30,6 +30,7 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 import { Getter, namespace } from 'vuex-class';
+import { removeCookie } from '@/api/auth';
 import AvatarImg from '@/assets/images/man.png';
 
 const appModule = namespace('app');
@@ -41,6 +42,15 @@ export default class Header extends Vue {
   AvatarImg = AvatarImg;
   onChangeCollapsed () {
     this.toggleCollapsed(!this.collapsed);
+  }
+  onSelectMenu ({ key = null }) {
+    if (key === 'logout') {
+      // 删除cookie
+      removeCookie();
+      this.$router.push({
+        name: 'Login'
+      });
+    }
   }
 };
 </script>

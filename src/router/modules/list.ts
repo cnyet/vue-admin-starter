@@ -4,7 +4,7 @@ export default [
     path: '/list',
     name: 'list',
     meta: {
-      icon: 'mail',
+      icon: 'iconlist',
       title: '列表页'
     },
     component: () => import(/* webpackChunkName: "form" */ '@/views/Home.vue'),

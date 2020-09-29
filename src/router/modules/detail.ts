@@ -4,7 +4,7 @@ export default [
     path: '/detail',
     name: 'detail',
     meta: {
-      icon: 'appstore',
+      icon: 'icondocument',
       title: '详情页'
     },
     component: () => import(/* webpackChunkName: "form" */ '@/views/Home.vue'),
