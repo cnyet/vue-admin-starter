@@ -3,14 +3,16 @@
  * @Author: 天泽
  * @Date: 2020-08-06 18:55:18
  * @LastEditors: 天泽
- * @LastEditTime: 2020-09-29 15:44:39
+ * @LastEditTime: 2020-09-30 20:23:49
 -->
 <template>
   <section class="container">
     <NavSide />
     <main class="body">
       <Header />
-      <router-view />
+      <div class="content">
+        <router-view />
+      </div>
     </main>
   </section>
 </template>
@@ -57,8 +59,16 @@ export default class Home extends Vue {
   display: flex;
   height: 100%;
   .body{
+    position: relative;
     flex: auto;
-    background-color: $bg-light;
+    .content{
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      top: 64px;
+      overflow-y: auto;
+      background-color: $bg-light;
+    }
   }
 }
 </style>
