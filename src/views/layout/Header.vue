@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-07-24 11:01:59
  * @LastEditors: 天泽
- * @LastEditTime: 2020-09-29 15:45:00
+ * @LastEditTime: 2020-09-29 19:24:38
 -->
 <template>
   <header class="header clearfix">
@@ -16,7 +16,7 @@
       首页
     </div>
     <div class="header-right">
-      <i class="iconfont iconsearch"></i>
+      <a-icon class="iconsearch" type="search"></a-icon>
       <a-dropdown placement="bottomCenter">
         <a-menu slot="overlay" @click="onSelectMenu">
           <a-menu-item key="user">个人中心</a-menu-item>
@@ -98,7 +98,7 @@ export default class Header extends Vue {
     }
     .iconsearch{
       cursor: pointer;
-      font-size: 24px;
+      font-size: 20px;
       padding: 0 15px;
       vertical-align: middle;
     }

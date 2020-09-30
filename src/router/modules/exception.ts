@@ -4,7 +4,7 @@ export default [
     path: '/exception',
     name: 'exception',
     meta: {
-      icon: 'iconexceptionFlow',
+      icon: 'alert',
       title: '异常页'
     },
     component: () => import(/* webpackChunkName: "form" */ '@/views/Home.vue'),

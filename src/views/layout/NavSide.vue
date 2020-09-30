@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-08-21 15:47:17
  * @LastEditors: 天泽
- * @LastEditTime: 2020-09-29 17:30:45
+ * @LastEditTime: 2020-09-29 20:17:15
 -->
 <template>
   <aside :class="['wrapper', collapsed ? 'off' : 'on']">
@@ -11,8 +11,7 @@
       <router-link class="link" to="/"></router-link>
     </div>
     <a-menu
-      :default-selected-keys="['1']"
-      :default-open-keys="['sub1']"
+      :default-selected-keys="['0']"
       mode="inline"
       theme="dark"
       :inline-collapsed="collapsed"
@@ -20,7 +19,7 @@
       <template v-for="item in menus">
         <a-sub-menu v-if="item.children" :key="item.key">
           <span slot="title">
-            <i :class="['iconfont', item.icon]"></i>
+            <a-icon :type="item.icon" />
             <span>{{item.name}}</span>
           </span>
           <a-menu-item v-for="element in item.children" :key="element.key">
@@ -28,7 +27,7 @@
           </a-menu-item>
         </a-sub-menu>
         <a-menu-item v-else :key="item.key">
-          <i :class="['iconfont', item.icon]"></i>
+          <a-icon :type="item.icon" />
           <span>{{item.name}}</span>
         </a-menu-item>
       </template>
@@ -61,6 +60,9 @@ export default class NavSide extends Vue {
   &.on{
     width: 240px;
   }
+  .ant-menu-item {
+    margin-top: 0;
+  }
   .logo-box{
     height: 32px;
     // background: $logo-bg-color;
@@ -76,9 +78,6 @@ export default class NavSide extends Vue {
       line-height: 32px;
       background-color: rgba(200, 200, 200, .3);
     }
-  }
-  .iconfont{
-    margin-right: 10px;
   }
   .menus{
     font-size: 16px;

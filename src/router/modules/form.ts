@@ -4,7 +4,7 @@ export default [
     path: '/form',
     name: 'form',
     meta: {
-      icon: 'iconbaogao',
+      icon: 'container',
       title: '表单页'
     },
     component: () => import(/* webpackChunkName: "form" */ '@/views/Home.vue'),
