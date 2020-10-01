@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-08-07 15:02:12
  * @LastEditors: 天泽
- * @LastEditTime: 2020-09-30 19:40:15
+ * @LastEditTime: 2020-10-01 15:20:51
  */
 export interface RouteItemInterface {
   key: string;
@@ -69,7 +69,4 @@ export default [{
   path: '/500',
   name: '500',
   component: () => import(/* webpackChunkName: "error" */ '@/views/exception/500.vue')
-}, {
-  path: '*',
-  redirect: '/404'
 }];

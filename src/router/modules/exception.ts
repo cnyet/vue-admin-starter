@@ -7,7 +7,8 @@ export default [
       icon: 'alert',
       title: '异常页'
     },
-    component: () => import(/* webpackChunkName: "form" */ '@/views/Home.vue'),
+    redirect: '/exception/403',
+    component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
     children: [
       {
         key: '5-1',

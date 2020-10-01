@@ -7,7 +7,8 @@ export default [
       icon: 'container',
       title: '表单页'
     },
-    component: () => import(/* webpackChunkName: "form" */ '@/views/Home.vue'),
+    redirect: '/form/base',
+    component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
     children: [
       {
         key: '1-1',
@@ -16,7 +17,7 @@ export default [
         meta: {
           title: '基础表单'
         },
-        component: () => import(/* webpackChunkName: "form" */ '@/views/form/index.vue')
+        component: () => import(/* webpackChunkName: "baseForm" */ '@/views/form/BaseForm.vue')
       }, {
         key: '1-2',
         path: 'distribution',
@@ -24,7 +25,7 @@ export default [
         meta: {
           title: '分布表单'
         },
-        component: () => import(/* webpackChunkName: "form" */ '@/views/form/index.vue')
+        component: () => import(/* webpackChunkName: "distributionForm" */ '@/views/form/DistributionForm.vue')
       }, {
         key: '1-3',
         path: 'advanced',
@@ -32,7 +33,7 @@ export default [
         meta: {
           title: '高级表单'
         },
-        component: () => import(/* webpackChunkName: "form" */ '@/views/form/index.vue')
+        component: () => import(/* webpackChunkName: "advancedForm" */ '@/views/form/AdvancedForm.vue')
       }
     ]
   }

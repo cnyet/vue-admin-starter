@@ -1,13 +1,13 @@
 <template>
   <div class="wrapper">
-    form
+    个人中心
   </div>
 </template>
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 
 @Component({})
-export default class Form extends Vue {
+export default class Individual extends Vue {
 
 };
 </script>

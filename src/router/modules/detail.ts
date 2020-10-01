@@ -7,7 +7,8 @@ export default [
       icon: 'desktop',
       title: '详情页'
     },
-    component: () => import(/* webpackChunkName: "form" */ '@/views/Home.vue'),
+    redirect: '/detail/base',
+    component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
     children: [
       {
         key: '3-1',
@@ -16,7 +17,7 @@ export default [
         meta: {
           title: '基础详情'
         },
-        component: () => import(/* webpackChunkName: "form" */ '@/views/form/index.vue')
+        component: () => import(/* webpackChunkName: "form" */ '@/views/detail/BasicDetail.vue')
       }, {
         key: '3-2',
         path: 'advanced',
@@ -24,7 +25,7 @@ export default [
         meta: {
           title: '高级详情'
         },
-        component: () => import(/* webpackChunkName: "form" */ '@/views/form/index.vue')
+        component: () => import(/* webpackChunkName: "form" */ '@/views/detail/AdvancedDetail.vue')
       }
     ]
   }

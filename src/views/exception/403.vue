@@ -3,15 +3,16 @@
  * @Author: 天泽
  * @Date: 2020-08-05 19:29:07
  * @LastEditors: 天泽
- * @LastEditTime: 2020-08-06 10:29:04
+ * @LastEditTime: 2020-10-01 14:15:50
 -->
 <template>
   <div class="container">
     <div class="wrapper">
       <div class="error">
-        <img class="forbid-img" src="../../assets/images/403.svg" alt="">
+        <img class="forbid-img" src="../../assets/images/403-color.svg" alt="">
       </div>
       <div class="forbid-box">
+        <h1 class="forbid-title">403</h1>
         <p class="forbid-tips">抱歉，你无权访问该页面</p>
         <a-button type="primary" @click="onClick">返回首页</a-button>
       </div>
@@ -47,6 +48,13 @@ export default class Forbiddance extends Vue {
       text-align: left;
       display: inline-block;
       vertical-align: middle;
+    }
+    .forbid-title{
+      margin-bottom: 24px;
+      color: #515a6e;
+      font-weight: 600;
+      font-size: 72px;
+      line-height: 72px;
     }
     .forbid-tips{
       margin-bottom: 16px;

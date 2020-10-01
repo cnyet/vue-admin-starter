@@ -7,24 +7,25 @@ export default [
       icon: 'inbox',
       title: '结果页'
     },
-    component: () => import(/* webpackChunkName: "form" */ '@/views/Home.vue'),
+    redirect: '/result/success',
+    component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
     children: [
       {
         key: '4-1',
         path: 'success',
         name: 'successResult',
         meta: {
-          title: '成功'
+          title: '成功页'
         },
-        component: () => import(/* webpackChunkName: "form" */ '@/views/form/index.vue')
+        component: () => import(/* webpackChunkName: "successResult" */ '@/views/result/SuccessResult.vue')
       }, {
         key: '4-2',
         path: 'fail',
         name: 'failResult',
         meta: {
-          title: '失败'
+          title: '失败页'
         },
-        component: () => import(/* webpackChunkName: "form" */ '@/views/form/index.vue')
+        component: () => import(/* webpackChunkName: "failResult" */ '@/views/result/FailResult.vue')
       }
     ]
   }

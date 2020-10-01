@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-08-06 18:55:18
  * @LastEditors: 天泽
- * @LastEditTime: 2020-09-30 20:23:49
+ * @LastEditTime: 2020-10-01 14:13:48
 -->
 <template>
   <section class="container">
@@ -11,7 +11,9 @@
     <main class="body">
       <Header />
       <div class="content">
-        <router-view />
+        <transition name="slide">
+          <router-view />
+        </transition>
       </div>
     </main>
   </section>
@@ -55,6 +57,14 @@ export default class Home extends Vue {
 };
 </script>
 <style lang="scss" scoped>
+.slide-enter-active {
+  transition: all .5s ease;
+}
+.slide-enter, .slide-leave-to {
+  transform: translateX(20px);
+  opacity: 0;
+}
+
 .container{
   display: flex;
   height: 100%;
@@ -67,7 +77,7 @@ export default class Home extends Vue {
       bottom: 0;
       top: 64px;
       overflow-y: auto;
-      background-color: $bg-light;
+      background-color: $bg-grey;
     }
   }
 }

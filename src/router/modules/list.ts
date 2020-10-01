@@ -7,16 +7,17 @@ export default [
       icon: 'bars',
       title: '列表页'
     },
-    component: () => import(/* webpackChunkName: "form" */ '@/views/Home.vue'),
+    component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
+    redirect: '/list/check',
     children: [
       {
         key: '2-1',
         path: 'check',
-        name: 'checkForm',
+        name: 'checkList',
         meta: {
           title: '查询表格'
         },
-        component: () => import(/* webpackChunkName: "form" */ '@/views/form/index.vue')
+        component: () => import(/* webpackChunkName: "checkList" */ '@/views/list/CheckList.vue')
       }, {
         key: '2-2',
         path: 'normal',
@@ -24,7 +25,7 @@ export default [
         meta: {
           title: '标准列表'
         },
-        component: () => import(/* webpackChunkName: "form" */ '@/views/form/index.vue')
+        component: () => import(/* webpackChunkName: "normalList" */ '@/views/list/NormalList.vue')
       }, {
         key: '2-3',
         path: 'card',
@@ -32,7 +33,7 @@ export default [
         meta: {
           title: '卡片列表'
         },
-        component: () => import(/* webpackChunkName: "form" */ '@/views/form/index.vue')
+        component: () => import(/* webpackChunkName: "cardList" */ '@/views/list/CardList.vue')
       }, {
         key: '2-4',
         path: 'search',
@@ -40,7 +41,7 @@ export default [
         meta: {
           title: '搜索列表'
         },
-        component: () => import(/* webpackChunkName: "form" */ '@/views/form/index.vue')
+        component: () => import(/* webpackChunkName: "searchList" */ '@/views/list/SearchList.vue')
       }
     ]
   }

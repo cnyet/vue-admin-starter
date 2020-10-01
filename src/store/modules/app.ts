@@ -42,7 +42,7 @@ const app = {
       state.routes = [{
         key: '0',
         name: 'Dashboard',
-        value: 'dashboard',
+        value: 'Dashboard',
         icon: 'dashboard'
       }, ...menus];
     },

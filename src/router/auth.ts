@@ -3,36 +3,22 @@
  * @Author: 天泽
  * @Date: 2020-09-03 21:13:23
  * @LastEditors: 天泽
- * @LastEditTime: 2020-09-29 16:46:05
+ * @LastEditTime: 2020-10-01 15:23:43
  */
 import { RouteConfig } from 'vue-router';
 import { routeModules } from './common';
 
-// 管理员
-const ADMIN_ROUTER: RouteConfig[] = [
-  {
-    path: '/',
-    component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
-    children: routeModules
-  }
-];
+const OtherRouter = {
+  path: '*',
+  redirect: '/404'
+};
 
+// 管理员
+const ADMIN_ROUTER: RouteConfig[] = [...routeModules, OtherRouter];
 // 普通用户
-const USER_ROUTER: RouteConfig[] = [
-  {
-    path: '/',
-    component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
-    children: routeModules
-  }
-];
+const USER_ROUTER: RouteConfig[] = [...routeModules, OtherRouter];
 // 访客
-const GUEST_ROUTER: RouteConfig[] = [
-  {
-    path: '/',
-    component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
-    children: routeModules
-  }
-];
+const GUEST_ROUTER: RouteConfig[] = [...routeModules, OtherRouter];
 
 export default {
   admin: ADMIN_ROUTER,

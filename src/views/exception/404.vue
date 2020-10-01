@@ -3,13 +3,13 @@
  * @Author: 天泽
  * @Date: 2020-08-05 19:29:07
  * @LastEditors: 天泽
- * @LastEditTime: 2020-08-06 12:00:33
+ * @LastEditTime: 2020-10-01 14:15:58
 -->
 <template>
   <div class="container">
     <div class="wrapper">
       <div class="error">
-        <img class="error-img" src="../../assets/images/404.svg" alt="">
+        <img class="error-img" src="../../assets/images/404-color.svg" alt="">
       </div>
       <div class="forbid-box">
         <h1 class="forbid-title">404</h1>

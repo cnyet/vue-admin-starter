@@ -9,7 +9,7 @@
   <div class="container">
     <div class="wrapper">
       <div class="error">
-        <img class="error-img" src="../../assets/images/500.svg" alt="">
+        <img class="error-img" src="../../assets/images/500-color.svg" alt="">
       </div>
       <div class="forbid-box">
         <h1 class="forbid-title">500</h1>
