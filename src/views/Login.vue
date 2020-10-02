@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-05-29 16:21:30
  * @LastEditors: 天泽
- * @LastEditTime: 2020-09-07 20:34:17
+ * @LastEditTime: 2020-10-02 17:39:39
 -->
 <template>
   <div class="login-container">
@@ -46,7 +46,6 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { WrappedFormUtils } from 'ant-design-vue/types/form/form';
 import { setCookie } from '@/api/auth';
-// import { UserAction } from '@/api';
 
 @Component({})
 export default class Login extends Vue {

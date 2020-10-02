@@ -2,47 +2,14 @@
   <div class="wrapper">
     <div class="header">
       <a-row :gutter="20">
-        <a-col :sm="12" :lg="6">
+        <a-col :sm="12" :lg="6" v-for="item in summary" :key="item.key">
           <div class="card-box">
             <span class="card-icon">
-              <i class="iconfont iconUsergroup"></i>
+              <i :class="['iconfont', iconMap[item.key]]"></i>
             </span>
             <div class="card-text">
-              <p class="title">New Visits</p>
-              <p class="number">102,400</p>
-            </div>
-          </div>
-        </a-col>
-        <a-col :sm="12" :lg="6">
-          <div class="card-box">
-            <span class="card-icon">
-              <i class="iconfont iconmessage"></i>
-            </span>
-            <div class="card-text">
-              <p class="title">Messages</p>
-              <p class="number">81,212</p>
-            </div>
-          </div>
-        </a-col>
-        <a-col :sm="12" :lg="6">
-          <div class="card-box">
-            <span class="card-icon">
-              <i class="iconfont iconrmb"></i>
-            </span>
-            <div class="card-text">
-              <p class="title">Purchases</p>
-              <p class="number">9,280</p>
-            </div>
-          </div>
-        </a-col>
-        <a-col :sm="12" :lg="6">
-          <div class="card-box">
-            <span class="card-icon">
-              <i class="iconfont iconcart"></i>
-            </span>
-            <div class="card-text">
-              <p class="title">Shoppings</p>
-              <p class="number">13,600</p>
+              <p class="title">{{item.name}}</p>
+              <p class="number">{{item.number}}</p>
             </div>
           </div>
         </a-col>
@@ -52,20 +19,34 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
+import DashboardAction from '@/api/modules/dashboard';
+import { ResponseData } from '@/api/http';
 
 @Component({})
 export default class Dashboard extends Vue {
-
+  private iconMap = ['iconUsergroup', 'iconmessage', 'iconrmb', 'iconcart'];
+  private summary = [];
+  getDashboard () {
+    DashboardAction.getDashboardData().then((res: ResponseData) => {
+      console.log(res);
+      if (res.data) {
+        this.summary = res.data.summary;
+      }
+    }).catch(err => {
+      console.error(err);
+    });
+  }
+  created () {
+    this.getDashboard();
+  }
 };
 </script>
 <style lang="scss" scoped>
 .wrapper{
   padding: 20px;
-  .header{
-    margin: 15px 0;
-  }
   .card-box{
     display: flex;
+    margin: 10px 0;
     justify-content: space-between;
     align-items: center;
     background-color: $bg-white;

@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-08-06 18:55:18
  * @LastEditors: 天泽
- * @LastEditTime: 2020-10-01 14:13:48
+ * @LastEditTime: 2020-10-02 16:29:16
 -->
 <template>
   <section class="container">
@@ -21,7 +21,8 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { HomeAction, UserAction } from '@/api';
+import HomeAction from '@/api/modules/home';
+import UserAction from '@/api/modules/user';
 import Header from './layout/Header.vue';
 import NavSide from './layout/NavSide.vue';
 

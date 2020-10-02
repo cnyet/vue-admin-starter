@@ -1,6 +1,6 @@
 import { ActionContext } from 'vuex';
 import { RouteConfig } from 'vue-router';
-import { UserAction } from '@/api';
+import UserAction from '@/api/modules/user';
 import router from '@/router';
 import Menus from '@/router/auth';
 import { routeModules, RouteInterface, MenusInterface } from '@/router/common';
