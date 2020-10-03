@@ -8,8 +8,7 @@
               <i :class="['iconfont', iconMap[item.key]]"></i>
             </span>
             <div class="card-text">
-              <p class="title">{{item.name}}</p>
-              <p class="number">{{item.number}}</p>
+              <a-statistic :title="item.name" :value="item.number" />
             </div>
           </div>
         </a-col>
@@ -79,13 +78,10 @@ export default class Dashboard extends Vue {
     .card-text{
       line-height: 30px;
       font-weight: bold;
-      .title{
-        font-size: 18px;
-        color: $fc-light;
-      }
-      .number{
-        font-size: 20px;
-        color: $fc-default;
+      ::v-deep{
+        .ant-statistic{
+          font-size: 16px;
+        }
       }
     }
   }
