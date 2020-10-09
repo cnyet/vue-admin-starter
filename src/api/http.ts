@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-07-23 16:02:48
  * @LastEditors: 天泽
- * @LastEditTime: 2020-10-02 17:31:39
+ * @LastEditTime: 2020-10-09 16:16:09
  */
 import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
 import { message } from 'ant-design-vue';
@@ -16,6 +16,7 @@ message.config({ maxCount: 1 });
 // 返回数据格式
 export interface ResponseData {
   code: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: any;
   message: string;
 };
