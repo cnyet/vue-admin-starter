@@ -4,7 +4,7 @@ export default [
     path: '/result',
     name: 'result',
     meta: {
-      icon: 'inbox',
+      icon: 'iconinbox',
       title: '结果页'
     },
     redirect: '/result/success',

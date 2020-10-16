@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-08-06 18:55:18
  * @LastEditors: 天泽
- * @LastEditTime: 2020-10-02 16:29:16
+ * @LastEditTime: 2020-10-16 18:31:40
 -->
 <template>
   <section class="container">
@@ -65,7 +65,6 @@ export default class Home extends Vue {
   transform: translateX(20px);
   opacity: 0;
 }
-
 .container{
   display: flex;
   height: 100%;

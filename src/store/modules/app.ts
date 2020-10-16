@@ -43,7 +43,7 @@ const app = {
         key: '0',
         name: 'Dashboard',
         value: 'Dashboard',
-        icon: 'dashboard'
+        icon: 'icondashboard'
       }, ...menus];
     },
     // 更新侧边导航的折叠状态

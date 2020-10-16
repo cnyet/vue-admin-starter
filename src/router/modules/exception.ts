@@ -4,7 +4,7 @@ export default [
     path: '/exception',
     name: 'exception',
     meta: {
-      icon: 'alert',
+      icon: 'iconexceptionFlow',
       title: '异常页'
     },
     redirect: '/exception/403',

@@ -4,7 +4,7 @@ export default [
     path: '/list',
     name: 'list',
     meta: {
-      icon: 'bars',
+      icon: 'iconlist',
       title: '列表页'
     },
     component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),

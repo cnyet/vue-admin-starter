@@ -4,7 +4,7 @@ export default [
     path: '/detail',
     name: 'detail',
     meta: {
-      icon: 'desktop',
+      icon: 'icondetail-copy',
       title: '详情页'
     },
     redirect: '/detail/base',

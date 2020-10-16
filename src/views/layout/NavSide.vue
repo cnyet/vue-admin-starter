@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-08-21 15:47:17
  * @LastEditors: 天泽
- * @LastEditTime: 2020-10-01 15:25:50
+ * @LastEditTime: 2020-10-16 18:26:19
 -->
 <template>
   <aside :class="['wrapper', collapsed ? 'off' : 'on']">
@@ -11,24 +11,25 @@
       <router-link class="link" to="/"></router-link>
     </div>
     <a-menu
-      :default-selected-keys="['0']"
       mode="inline"
       theme="dark"
+      :default-selected-keys="['0']"
       :inline-collapsed="collapsed"
       @click="onChangeMenu">
       <template v-for="item in menus">
         <a-sub-menu v-if="item.children" :key="item.value">
           <span slot="title">
-            <a-icon :type="item.icon" />
-            <span>{{item.name}}</span>
+            <i :class="['iconfont', item.icon]"></i>
+            <span class="nav-text">{{item.name}}</span>
           </span>
           <a-menu-item v-for="element in item.children" :key="element.value">
             <span>{{element.name}}</span>
           </a-menu-item>
         </a-sub-menu>
         <a-menu-item v-else :key="item.value">
-          <a-icon :type="item.icon" />
-          <span>{{item.name}}</span>
+          <!-- <a-icon type="dashboard" /> -->
+          <svg-icon svgName="dashboard" />
+          <span class="nav-text">{{item.name}}</span>
         </a-menu-item>
       </template>
     </a-menu>
@@ -60,6 +61,12 @@ export default class NavSide extends Vue {
   }
   &.off{
     width: 80px;
+    .iconfont{
+      font-size: 18px;
+    }
+    .nav-text{
+      display: none;
+    }
   }
   &.on{
     width: 240px;
@@ -83,14 +90,11 @@ export default class NavSide extends Vue {
       background-color: rgba(200, 200, 200, .3);
     }
   }
-  .menus{
-    font-size: 16px;
-    color: $fc-white;
-    margin: 0;
-    padding: 0 15px;
-    .menus-item{
-      line-height: 30px;
-    }
+  .iconfont{
+    margin-right: 10px;
+  }
+  .nav-text{
+    display: inline-block;
   }
 }
 </style>

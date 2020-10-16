@@ -4,7 +4,7 @@ export default [
     path: '/form',
     name: 'form',
     meta: {
-      icon: 'container',
+      icon: 'iconform',
       title: '表单页'
     },
     redirect: '/form/base',

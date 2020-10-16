@@ -4,7 +4,7 @@ export default [
     path: '/user',
     name: 'user',
     meta: {
-      icon: 'user',
+      icon: 'iconUserSettings',
       title: '个人页'
     },
     redirect: '/user/individual',

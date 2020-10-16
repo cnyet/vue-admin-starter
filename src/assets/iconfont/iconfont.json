@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "6482706",
+      "name": "detail",
+      "font_class": "detail-copy",
+      "unicode": "eadd",
+      "unicode_decimal": 60125
+    },
+    {
+      "icon_id": "6907202",
+      "name": "form",
+      "font_class": "form",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
       "icon_id": "7685014",
       "name": "cart",
       "font_class": "cart",
@@ -74,13 +88,6 @@
       "font_class": "dashboard",
       "unicode": "e6b6",
       "unicode_decimal": 59062
-    },
-    {
-      "icon_id": "14629156",
-      "name": "document",
-      "font_class": "document",
-      "unicode": "e60c",
-      "unicode_decimal": 58892
     }
   ]
 }

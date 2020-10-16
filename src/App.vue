@@ -1,9 +1,9 @@
 <!--
- * @Descripttion:
+ * @Descripttion: 页面根结点模板
  * @Author: 天泽
  * @Date: 2020-08-06 18:55:18
  * @LastEditors: 天泽
- * @LastEditTime: 2020-09-16 16:05:38
+ * @LastEditTime: 2020-10-16 18:53:01
 -->
 <template>
   <div id="app">
