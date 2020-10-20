@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-08-21 15:47:17
  * @LastEditors: 天泽
- * @LastEditTime: 2020-10-16 18:26:19
+ * @LastEditTime: 2020-10-19 20:30:47
 -->
 <template>
   <aside :class="['wrapper', collapsed ? 'off' : 'on']">
@@ -27,8 +27,8 @@
           </a-menu-item>
         </a-sub-menu>
         <a-menu-item v-else :key="item.value">
-          <!-- <a-icon type="dashboard" /> -->
-          <svg-icon svgName="dashboard" />
+          <a-icon type="dashboard" />
+          <!-- <svg-icon svgName="icondashboard" /> -->
           <span class="nav-text">{{item.name}}</span>
         </a-menu-item>
       </template>

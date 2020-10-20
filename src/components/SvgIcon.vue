@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-10-16 14:36:28
  * @LastEditors: 天泽
- * @LastEditTime: 2020-10-16 18:46:04
+ * @LastEditTime: 2020-10-19 18:03:38
 -->
 <template>
   <svg class="icon" aria-hidden="true">
@@ -17,7 +17,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 export default class SvgIcon extends Vue {
   @Prop({ required: true }) private svgName!: string;
   get iconName () {
-    return `#icon-${this.svgName}`;
+    return `#${this.svgName}`;
   }
 }
 </script>

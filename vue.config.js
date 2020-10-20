@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-08-07 14:51:50
  * @LastEditors: 天泽
- * @LastEditTime: 2020-10-16 20:00:36
+ * @LastEditTime: 2020-10-19 17:44:26
  */
 const path = require('path');
 // 分析包文件
@@ -15,16 +15,6 @@ module.exports = {
   // config 参数为已经解析好的 webpack 配置
   chainWebpack: config => {
     config.resolve.alias.set('@', path.join(__dirname, 'src'));
-    // config.module.rule('svg')
-    //   .test(/\.svg$/)
-    //   .include
-    //     .add('src')
-    //     .end()
-    //   .use('svg')
-    //     .loader('svg-sprite-loader')
-    //     .options({
-    //       symbolId: 'icon-[name]'
-    //     });
     config.plugin('html')
       .tap((args) => {
         args[0].templateParameters = {
