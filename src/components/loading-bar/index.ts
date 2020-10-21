@@ -60,7 +60,7 @@ export default {
       }
       update({
         percent: percent,
-        status: 'succcess',
+        status: 'success',
         show: true
       });
     }, 200);

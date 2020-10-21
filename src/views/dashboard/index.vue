@@ -20,14 +20,17 @@
 import { Vue, Component } from 'vue-property-decorator';
 import DashboardAction from '@/api/modules/dashboard';
 import { ResponseData } from '@/api/http';
+import loadingBar from '../../components/loading-bar';
 
 @Component({})
 export default class Dashboard extends Vue {
   private iconMap = ['iconUsergroup', 'iconmessage', 'iconrmb', 'iconcart'];
   private summary = [];
   getDashboard () {
+    loadingBar.start();
     DashboardAction.getDashboardData().then((res: ResponseData) => {
       console.log(res);
+      loadingBar.finish();
       if (res.data) {
         this.summary = res.data.summary;
       }

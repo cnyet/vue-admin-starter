@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-10-20 17:24:32
  * @LastEditors: 天泽
- * @LastEditTime: 2020-10-20 21:17:24
+ * @LastEditTime: 2020-10-21 14:48:31
 -->
 <template>
   <transition name="fade">
@@ -72,5 +72,8 @@ export default class LoadingBar extends Vue {
 }
 .v-loading-bar-inner-color-primary {
   background-color: #2d8cf0;
+}
+.v-loading-bar-inner-failed-color-error {
+    background-color: #ed4014
 }
 </style>

@@ -13,20 +13,19 @@ LoadingBar.NewInstance = (properties: {}) => {
     }
   });
   const component = Instance.$mount();
+  const instanceLoadingBar: any = Instance.$children[0];
   document.body.appendChild(component.$el);
 
-  const loadingBar: any = Instance.$children[0];
   return {
-    component: loadingBar,
     update (options: { percent: any; status: any; show: any }) {
       if ('percent' in options) {
-        loadingBar.percent = options.percent;
+        instanceLoadingBar.percent = options.percent;
       }
       if (options.status) {
-        loadingBar.status = options.status;
+        instanceLoadingBar.status = options.status;
       }
       if ('show' in options) {
-        loadingBar.show = options.show;
+        instanceLoadingBar.show = options.show;
       }
     },
     destroy () {
