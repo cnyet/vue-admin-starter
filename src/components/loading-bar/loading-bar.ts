@@ -2,7 +2,7 @@
 import Vue from 'vue';
 import LoadingBar from './loading-bar.vue';
 
-LoadingBar.NewInstance = (properties: {}) => {
+(LoadingBar as any).NewInstance = (properties: {}) => {
   const _props = properties || {};
   const Instance = new Vue({
     data: _props,

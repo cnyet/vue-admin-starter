@@ -49,7 +49,7 @@ export default class ProgressBar {
     const remainRate = 100 - this.node.loadingRate;
     this.node.status = true;
     this.node.timer = setInterval(() => {
-      if (remainRate < 10) {
+      if (remainRate < 5) {
         clearInterval(this.node.timer);
         return;
       }
@@ -62,7 +62,10 @@ export default class ProgressBar {
     }, 1000);
   }
   public static hide () {
-    this.node.status = false;
+    this.node.loadingRate = 100;
+    setTimeout(() => {
+      this.node.status = false;
+    }, 500);
     clearInterval(this.node.timer);
   }
 };

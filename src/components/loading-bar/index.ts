@@ -9,7 +9,7 @@ let height = 2;
 let timer: number | null | undefined;
 
 function getLoadingBarInstance () {
-  loadingBarInstance = loadingBarInstance || LoadingBar.NewInstance({
+  loadingBarInstance = loadingBarInstance || (LoadingBar as any).NewInstance({
     color: color,
     failedColor: failedColor,
     height: height

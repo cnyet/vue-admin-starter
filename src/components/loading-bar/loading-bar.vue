@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-10-20 17:24:32
  * @LastEditors: 天泽
- * @LastEditTime: 2020-10-21 14:48:31
+ * @LastEditTime: 2020-11-18 19:40:34
 -->
 <template>
   <transition name="fade">
@@ -25,6 +25,7 @@ export default class LoadingBar extends Vue {
   public percent = 0;
   public status = 'success';
   public show = false;
+  public NewInstance = null;
   get classes () {
     return `${prefixCls}`;
   }

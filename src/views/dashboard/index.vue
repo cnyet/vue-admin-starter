@@ -20,17 +20,22 @@
 import { Vue, Component } from 'vue-property-decorator';
 import DashboardAction from '@/api/modules/dashboard';
 import { ResponseData } from '@/api/http';
-import loadingBar from '../../components/loading-bar';
+// import loadingBar from '../../components/loading-bar';
+import ProgressBar from '@/plugins/progress-bar';
+
+Vue.use(ProgressBar);
 
 @Component({})
 export default class Dashboard extends Vue {
   private iconMap = ['iconUsergroup', 'iconmessage', 'iconrmb', 'iconcart'];
   private summary = [];
   getDashboard () {
-    loadingBar.start();
+    // loadingBar.start();
+    ProgressBar.show();
     DashboardAction.getDashboardData().then((res: ResponseData) => {
       console.log(res);
-      loadingBar.finish();
+      // loadingBar.finish();
+      ProgressBar.hide();
       if (res.data) {
         this.summary = res.data.summary;
       }
