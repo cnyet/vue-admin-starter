@@ -5,6 +5,7 @@ import router from '@/router';
 import Menus from '@/router/auth';
 import { routeModules, RouteInterface, MenusInterface } from '@/router/common';
 export interface AppStates {
+  userInfo: object;
   routes: object[];
   collapsed: boolean;
 };
@@ -30,10 +31,15 @@ function formatMenus (rotues: RouteInterface[]) {
 const app = {
   namespaced: true,
   state: {
+    userInfo: null, // 用户信息
     routes: [],
     collapsed: false
   },
   mutations: {
+    // 修改用户信息
+    SET_USER_INFO (state: AppStates, value: object) {
+      state.userInfo = value;
+    },
     // 动态添加路由
     ADD_ROUTES (state: AppStates) {
       const routes: RouteConfig[] = Menus.admin;

@@ -3,13 +3,13 @@
  * @Author: 天泽
  * @Date: 2020-08-06 18:55:18
  * @LastEditors: 天泽
- * @LastEditTime: 2020-09-29 16:46:28
+ * @LastEditTime: 2020-12-15 17:09:09
  */
 import Vue from 'vue';
 import VueRouter, { Route, RawLocation } from 'vue-router';
 import { ErrorHandler } from 'vue-router/types/router';
 import commonRouter from './common';
-import { getCookie } from '@/api/auth';
+import { getCookie } from '@/utils/auth';
 import store from '../store';
 
 Vue.use(VueRouter);
