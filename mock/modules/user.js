@@ -1,7 +1,7 @@
 const Mock = require('mockjs');
 // 用户列表
 const UserList = Mock.mock({
-  "code": 0,
+  "code": 1,
   "message": "success",
   "data|5": [
     {

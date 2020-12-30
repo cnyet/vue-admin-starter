@@ -2,7 +2,7 @@ const Mock = require('mockjs');
 
 // 获取dashboard数据
 const DashboardData = Mock.mock({
-  "code": 0,
+  "code": 1,
   "message": "success",
   "data": {
     "summary": [

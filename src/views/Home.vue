@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-08-06 18:55:18
  * @LastEditors: 天泽
- * @LastEditTime: 2020-10-21 14:36:37
+ * @LastEditTime: 2020-12-29 11:16:14
 -->
 <template>
   <section class="container">
@@ -34,8 +34,6 @@ export default class Home extends Vue {
   getHomeList () {
     HomeAction.getHomeList().then(res => {
       console.log(res);
-    }).catch(err => {
-      console.error(err);
     });
   }
   getUserList () {
@@ -48,8 +46,6 @@ export default class Home extends Vue {
       name: 123
     }).then(res => {
       console.log(res);
-    }).catch(err => {
-      console.error(err);
     });
   }
   created () {

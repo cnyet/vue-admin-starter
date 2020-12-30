@@ -33,7 +33,6 @@ export default class Dashboard extends Vue {
     // loadingBar.start();
     ProgressBar.show();
     DashboardAction.getDashboardData().then((res: ResponseData) => {
-      console.log(res);
       // loadingBar.finish();
       ProgressBar.hide();
       if (res.data) {

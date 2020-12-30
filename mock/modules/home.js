@@ -1,7 +1,7 @@
 const Mock = require('mockjs');
 // 获取产品列表
 const ProjectList = Mock.mock({
-  "code": 0,
+  "code": 1,
   "message": "success",
   "data|3": [{
     "symbol": "@string(\"lower\", 5)",

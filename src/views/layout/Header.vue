@@ -3,7 +3,7 @@
  * @Author: 天泽
  * @Date: 2020-07-24 11:01:59
  * @LastEditors: 天泽
- * @LastEditTime: 2020-09-29 19:24:38
+ * @LastEditTime: 2020-12-29 11:04:37
 -->
 <template>
   <header class="header clearfix">
@@ -30,7 +30,7 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 import { Getter, namespace } from 'vuex-class';
-import { removeCookie } from '@/api/auth';
+import { removeCookie } from '@/utils/auth';
 import AvatarImg from '@/assets/images/man.png';
 
 const appModule = namespace('app');

@@ -4,7 +4,7 @@
  * @Author: 天泽
  * @Date: 2020-07-23 16:02:48
  * @LastEditors: 天泽
- * @LastEditTime: 2020-12-15 16:58:02
+ * @LastEditTime: 2020-12-30 17:40:24
  */
 import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
 import { message } from 'ant-design-vue';
@@ -54,33 +54,29 @@ instance.interceptors.request.use((config: AxiosRequestConfig) => {
 });
 
 // 添加响应时的拦截
-instance.interceptors.response.use((response: AxiosResponse) => {
+instance.interceptors.response.use((response: any) => {
   if (response.status >= 200 && response.status < 300) {
-    const code = response.data.code;
+    const code = response.data.code || response.data.response_code;
     if (code === 200 || code === 1) {
-      return response.data;
-    } else if (code === 0) {
-      const error = new Error('未登录');
-      return error;
-    } else if (code === 403) {
+      return response;
+    }
+    if (code === 0) {
+      router.replace('/login');
+    }
+    if (code === 403) {
       // 用户无权限
       router.replace('/403');
-      const error = new Error('该用户暂无权限');
-      return error;
-    } else {
-      const message = errorMessage.get(response.data.code);
-      const error = message || response.statusText;
-      return error;
     }
+    const message = errorMessage(response);
+    return Promise.reject(message);
   } else {
-    const message = errorMessage.get(response.data.code);
-    const error = message || response.statusText;
-    return error;
+    const message = errorMessage(response);
+    return Promise.reject(message);
   }
 }, (error) => {
-  const msg = error.response.data.message || error.response.statusText || error;
-  message.warn(msg);
-  return Promise.reject(error);
+  const message = errorMessage(error.response);
+  const errorMsg = message || error;
+  return Promise.reject(errorMsg);
 });
 
 export default class Http {
@@ -95,7 +91,7 @@ export default class Http {
     return {
       code: res.data.code || res.status,
       data: res.data.data || res.data,
-      message: res.data.msg || res.statusText
+      message: res.data.message || res.statusText
     };
   }
 }
