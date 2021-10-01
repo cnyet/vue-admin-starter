@@ -32,14 +32,14 @@ export interface MenusInterface extends MenusItemInterface {
 
 // eslint-disable-next-line
 function importModules(files: any) {
-  const routeModules: RouteInterface[] = [];
+  const routeModules: RouteInterface[] = []
   files.keys().forEach((key: string) => {
-    routeModules.push(...files(key).default);
-  });
-  routeModules.sort((a: RouteInterface, b: RouteInterface) => Number(a.key) - Number(b.key));
-  return routeModules;
+    routeModules.push(...files(key).default)
+  })
+  routeModules.sort((a: RouteInterface, b: RouteInterface) => Number(a.key) - Number(b.key))
+  return routeModules
 }
-export const routeModules = importModules(require.context('./modules', false, /\.ts$/));
+export const routeModules = importModules(require.context('./modules', false, /\.ts$/))
 
 export default [{
   path: '/',
@@ -69,4 +69,4 @@ export default [{
   path: '/500',
   name: '500',
   component: () => import(/* webpackChunkName: "error" */ '@/views/exception/500.vue')
-}];
+}]

@@ -17,13 +17,13 @@
   </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
-import DashboardAction from '@/api/modules/dashboard';
-import { ResponseData } from '@/api/http';
+import { Vue, Component } from 'vue-property-decorator'
+import DashboardAction from '@/api/modules/dashboard'
+import { ResponseData } from '@/api/http'
 // import loadingBar from '../../components/loading-bar';
-import ProgressBar from '@/plugins/progress-bar';
+import ProgressBar from '@/plugins/progress-bar'
 
-Vue.use(ProgressBar);
+Vue.use(ProgressBar)
 
 @Component({})
 export default class Dashboard extends Vue {
@@ -31,19 +31,19 @@ export default class Dashboard extends Vue {
   private summary = [];
   getDashboard () {
     // loadingBar.start();
-    ProgressBar.show();
+    ProgressBar.show()
     DashboardAction.getDashboardData().then((res: ResponseData) => {
       // loadingBar.finish();
-      ProgressBar.hide();
+      ProgressBar.hide()
       if (res.data) {
-        this.summary = res.data.summary;
+        this.summary = res.data.summary
       }
     }).catch(err => {
-      console.error(err);
-    });
+      console.error(err)
+    })
   }
   created () {
-    this.getDashboard();
+    this.getDashboard()
   }
 };
 </script>

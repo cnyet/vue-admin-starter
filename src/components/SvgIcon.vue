@@ -11,13 +11,13 @@
   </svg>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
 @Component({})
 export default class SvgIcon extends Vue {
   @Prop({ required: true }) private svgName!: string;
   get iconName () {
-    return `#${this.svgName}`;
+    return `#${this.svgName}`
   }
 }
 </script>

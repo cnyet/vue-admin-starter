@@ -28,12 +28,12 @@
   </header>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
-import { Getter, namespace } from 'vuex-class';
-import { removeCookie } from '@/utils/auth';
-import AvatarImg from '@/assets/images/man.png';
+import { Vue, Component } from 'vue-property-decorator'
+import { Getter, namespace } from 'vuex-class'
+import { removeCookie } from '@/utils/auth'
+import AvatarImg from '@/assets/images/man.png'
 
-const appModule = namespace('app');
+const appModule = namespace('app')
 
 @Component
 export default class Header extends Vue {
@@ -41,15 +41,15 @@ export default class Header extends Vue {
   @appModule.Action('toggleCollapsed') toggleCollapsed!: Function;
   AvatarImg = AvatarImg;
   onChangeCollapsed () {
-    this.toggleCollapsed(!this.collapsed);
+    this.toggleCollapsed(!this.collapsed)
   }
   onSelectMenu ({ key = null }) {
     if (key === 'logout') {
       // 删除cookie
-      removeCookie();
+      removeCookie()
       this.$router.push({
         name: 'Login'
-      });
+      })
     }
   }
 };

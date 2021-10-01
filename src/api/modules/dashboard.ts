@@ -5,7 +5,7 @@
  * @LastEditors: 天泽
  * @LastEditTime: 2020-10-02 17:40:36
  */
-import Http from '../http';
+import Http from '../http'
 
 // 获取产品列表
 function getDashboardData (params = {}) {
@@ -13,9 +13,9 @@ function getDashboardData (params = {}) {
     method: 'get',
     url: '/api/dashboard/data',
     params
-  });
+  })
 }
 
 export default {
   getDashboardData
-};
+}

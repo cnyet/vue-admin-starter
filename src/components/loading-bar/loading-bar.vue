@@ -13,9 +13,9 @@
   </transition>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
-const prefixCls = 'v-loading-bar';
+const prefixCls = 'v-loading-bar'
 
 @Component({})
 export default class LoadingBar extends Vue {
@@ -27,7 +27,7 @@ export default class LoadingBar extends Vue {
   public show = false;
   public NewInstance = null;
   get classes () {
-    return `${prefixCls}`;
+    return `${prefixCls}`
   }
   get innerClasses () {
     return [
@@ -36,26 +36,26 @@ export default class LoadingBar extends Vue {
         [`${prefixCls}-inner-color-primary`]: this.color === 'primary' && this.status === 'success',
         [`${prefixCls}-inner-fail-color-error`]: this.failedColor === 'error' && this.status === 'error'
       }
-    ];
+    ]
   }
   get outerStyles () {
     return {
       height: `${this.height}px`
-    };
+    }
   }
   get styles () {
     const style = {
       width: `${this.percent}%`,
       height: `${this.height}px`,
       backgroundColor: ''
-    };
+    }
     if (this.color !== 'primary' && this.status === 'success') {
-      style.backgroundColor = this.color;
+      style.backgroundColor = this.color
     }
     if (this.color !== 'error' && this.status === 'error') {
-      style.backgroundColor = this.failedColor;
+      style.backgroundColor = this.failedColor
     }
-    return style;
+    return style
   }
 }
 </script>

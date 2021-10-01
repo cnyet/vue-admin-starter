@@ -43,31 +43,31 @@
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { WrappedFormUtils } from 'ant-design-vue/types/form/form';
-import { setCookie } from '@/utils/auth';
+import { Component, Vue } from 'vue-property-decorator'
+import { WrappedFormUtils } from 'ant-design-vue/types/form/form'
+import { setCookie } from '@/utils/auth'
 
 @Component({})
 export default class Login extends Vue {
   form: WrappedFormUtils | undefined;
   beforeCreate () {
-    this.form = this.$form.createForm(this, { name: 'normal_login' });
+    this.form = this.$form.createForm(this, { name: 'normal_login' })
   }
   handleSubmit (e: Event) {
-    e.preventDefault();
+    e.preventDefault()
     if (this.form) {
       this.form.validateFields((err, values) => {
         if (!err) {
           if (values.userName === 'admin' && values.password === '123') {
-            setCookie('KbijSNc2afmE_CHQAAAB');
-            this.$router.push('/');
+            setCookie('KbijSNc2afmE_CHQAAAB')
+            this.$router.push('/')
           } else {
-            this.$message.warn('账号或密码输入有误');
+            this.$message.warn('账号或密码输入有误')
           }
         } else {
-          this.$message.warn('账号或密码输入有误');
+          this.$message.warn('账号或密码输入有误')
         }
-      });
+      })
     }
   }
 };

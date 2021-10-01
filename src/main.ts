@@ -5,18 +5,18 @@
  * @LastEditors: 天泽
  * @LastEditTime: 2020-10-21 14:51:53
  */
-import Vue from 'vue';
-import Antd from 'ant-design-vue';
-import App from './App.vue';
-import router from './router';
-import store from './store';
-import './registerServiceWorker';
+import Vue from 'vue'
+import Antd from 'ant-design-vue'
+import App from './App.vue'
+import router from './router'
+import store from './store'
+import './registerServiceWorker'
 
-Vue.use(Antd);
-Vue.config.productionTip = false;
+Vue.use(Antd)
+Vue.config.productionTip = false
 
 new Vue({
   router,
   store,
   render: h => h(App)
-}).$mount('#app');
+}).$mount('#app')

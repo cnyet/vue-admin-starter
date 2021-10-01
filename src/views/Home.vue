@@ -20,11 +20,11 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-import HomeAction from '@/api/modules/home';
-import UserAction from '@/api/modules/user';
-import Header from './layout/Header.vue';
-import NavSide from './layout/NavSide.vue';
+import { Component, Prop, Vue } from 'vue-property-decorator'
+import HomeAction from '@/api/modules/home'
+import UserAction from '@/api/modules/user'
+import Header from './layout/Header.vue'
+import NavSide from './layout/NavSide.vue'
 
 @Component({
   components: { Header, NavSide }
@@ -33,23 +33,23 @@ export default class Home extends Vue {
   @Prop() private msg!: string;
   getHomeList () {
     HomeAction.getHomeList().then(res => {
-      console.log(res);
-    });
+      console.log(res)
+    })
   }
   getUserList () {
     UserAction.getUserList().then(res => {
-      console.log(res);
-    });
+      console.log(res)
+    })
   }
   saveNewItem () {
     HomeAction.saveNewItem({
       name: 123
     }).then(res => {
-      console.log(res);
-    });
+      console.log(res)
+    })
   }
   created () {
-    this.getUserList();
+    this.getUserList()
   }
 };
 </script>

@@ -5,7 +5,7 @@
  * @LastEditors: 天泽
  * @LastEditTime: 2020-09-27 17:08:17
  */
-import Http from '../http';
+import Http from '../http'
 
 // 获取产品列表
 function getHomeList (params = {}) {
@@ -13,7 +13,7 @@ function getHomeList (params = {}) {
     method: 'get',
     url: '/api/home/projectList',
     params
-  });
+  })
 }
 
 // 新增产品
@@ -22,10 +22,10 @@ function saveNewItem (params = {}) {
     method: 'get',
     url: '/api/home/saveProject',
     params
-  });
+  })
 }
 
 export default {
   getHomeList,
   saveNewItem
-};
+}

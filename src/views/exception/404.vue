@@ -20,12 +20,12 @@
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator'
 
 @Component({})
 export default class NotFound extends Vue {
   onClick () {
-    this.$router.go(-1);
+    this.$router.go(-1)
   }
 };
 </script>
